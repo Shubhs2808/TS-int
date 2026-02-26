@@ -1,0 +1,1035 @@
+guid: 9ed81b39-8cd2-4a52-9733-29d5c4daee16
+liveboard:
+  name: Case_study Liveboard Shubham
+  visualizations:
+  - id: Viz_1
+    answer:
+      name: Total sales and Total Inventory by Product
+      tables:
+      - id: trial model
+        name: trial model
+        fqn: 00b6880c-2af3-4174-869f-9b6c5f598b04
+      formulas:
+      - id: formula_sales
+        name: sales
+        expr: "[Quantity Sold] * [Unit Retail Price Usd]"
+        was_auto_generated: false
+      - id: formula_Inventory
+        name: Inventory
+        expr: "if ( [Quantity Purchased] != null ) then [Quantity Purchased] * [Unit Cost Usd] else null"
+        was_auto_generated: false
+      search_query: "[Product] [formula_sales] [Date] = 'last 2 months'"
+      answer_columns:
+      - name: Product
+      - name: Total sales
+        format:
+          category: CURRENCY
+          currencyFormatConfig:
+            locale: USD
+            unit: AUTO
+            decimals: 2.0
+            toSeparateThousands: true
+          isCategoryEditable: true
+      table:
+        table_columns:
+        - column_id: Product
+          show_headline: false
+        - column_id: Total sales
+          show_headline: false
+        ordered_column_ids:
+        - Product
+        - Total sales
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"orderedColumnIds\": [\"Product\"]}"
+      chart:
+        type: COLUMN
+        chart_columns:
+        - column_id: Product
+        - column_id: Total sales
+        axis_configs:
+        - x:
+          - Product
+          "y":
+          - Total sales
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Product\",\"columnProperty\": {}},{\"columnId\": \"Total sales\",\"columnProperty\": {\"dataLabels\": true}}],\"axisProperties\": [{\"id\": \"938f2f1c-889c-440e-ac6f-c002be5ef37f\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total sales\"],\"isOpposite\": false}},{\"id\": \"fef59593-d8a8-4c3f-86e0-ccfa737181d6\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Product\"]}}],\"seriesColors\": [{\"serieName\": \"e648abe9-833a-48fe-a841-29f85c2fca18\",\"color\": \"#48D1E0\"},{\"serieName\": \"39727204-732f-4704-8678-160ba0894a5c\",\"color\": \"#2E75F0\"},{\"serieName\": \"Total sales\",\"color\": \"#06BF7F\"},{\"serieName\": \"d399e7cb-b484-48eb-a9c2-dfa467b31433\",\"color\": \"#48D1E0\"}],\"systemSeriesColors\": [{\"serieName\": \"e648abe9-833a-48fe-a841-29f85c2fca18\",\"color\": \"#48D1E0\"},{\"serieName\": \"39727204-732f-4704-8678-160ba0894a5c\",\"color\": \"#2E75F0\"},{\"serieName\": \"Total sales\",\"color\": \"#06BF7F\"},{\"serieName\": \"d399e7cb-b484-48eb-a9c2-dfa467b31433\",\"color\": \"#FCC838\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 774ee052-6a42-4ec9-9381-36531a893d5f
+  - id: Viz_2
+    answer:
+      name: Total sales for food items sold on non holidays
+      tables:
+      - id: trial model
+        name: trial model
+        fqn: 00b6880c-2af3-4174-869f-9b6c5f598b04
+      table_paths:
+      - id: trial model_1
+        table: trial model
+      formulas:
+      - id: formula_test
+        name: test
+        expr: "[trial model_1::Sales] + 1000"
+        was_auto_generated: false
+      - id: formula_inventory
+        name: inventory
+        expr: "[trial model_1::Quantity Purchased] * [trial model_1::Unit Cost Usd]"
+        was_auto_generated: false
+      - id: formula_sales
+        name: sales
+        expr: "[trial model_1::Quantity Sold] * [trial model_1::Unit Retail Price Usd]"
+        was_auto_generated: false
+      search_query: "[trial model_1::Is Holiday] = 0 [trial model_1::Product] != '{null}' [trial model_1::type] = 'food' [formula_test]"
+      answer_columns:
+      - name: Total test
+      table:
+        table_columns:
+        - column_id: Total test
+          show_headline: false
+        ordered_column_ids:
+        - Total test
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Total test
+        axis_configs:
+        - "y":
+          - Total test
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Total test\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"16332453-2323-4ca7-8e04-d78ecd1c55bf\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total test\"],\"isOpposite\": false}},{\"id\": \"d585d170-1bd6-4fe5-bbb4-a2df87b32eaa\",\"properties\": {\"axisType\": \"X\"}}],\"systemSeriesColors\": [{\"serieName\": \"8fc4242d-2f32-4762-b66e-329aef1bd88c\",\"color\": \"#FCC838\"}]}"
+      display_mode: CHART_MODE
+      dynamic_name: Total sales for food items sold on non holidays
+    viz_guid: 73ac4718-1441-4657-9d2a-0b3ae8ed6874
+  - id: Viz_3
+    answer:
+      name: Products with Sales more the $150
+      tables:
+      - id: trial model
+        name: trial model
+        fqn: 00b6880c-2af3-4174-869f-9b6c5f598b04
+      formulas:
+      - id: formula_sales
+        name: sales
+        expr: "[Quantity Sold] * [Unit Retail Price Usd]"
+        was_auto_generated: false
+      - id: formula_inventory
+        name: inventory
+        expr: "[Quantity Purchased] * [Unit Cost Usd]"
+        was_auto_generated: false
+      search_query: "[Product] [formula_sales] [formula_sales] != {null}"
+      answer_columns:
+      - name: Product
+        custom_name: Total sales
+      - name: Total sales
+        format:
+          category: CURRENCY
+          currencyFormatConfig:
+            locale: USD
+            unit: AUTO
+            decimals: 2.0
+            toSeparateThousands: true
+          isCategoryEditable: true
+      table:
+        table_columns:
+        - column_id: Product
+          show_headline: false
+        - column_id: Total sales
+          show_headline: false
+        ordered_column_ids:
+        - Product
+        - Total sales
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"columnProperties\": [{\"columnId\": \"Total sales\",\"columnProperty\": {\"conditionalFormatting\": {\"rows\": [{\"operator\": \"GREATER_THAN\",\"value\": \"150\",\"backgroundFormatType\": \"SOLID\",\"solidBackgroundAttrs\": {\"color\": \"#48D1E0\"},\"comparisonType\": \"VALUE_BASED\",\"isHighlightRow\": false}]}}}]}"
+      chart:
+        type: COLUMN
+        chart_columns:
+        - column_id: Product
+        - column_id: Total sales
+        axis_configs:
+        - x:
+          - Product
+          "y":
+          - Total sales
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Product\",\"columnProperty\": {}},{\"columnId\": \"Total sales\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"cb179877-c05d-4292-a886-64d669b9d5e5\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total sales\"],\"isOpposite\": false}},{\"id\": \"f144930d-6344-474f-b842-af177027b39a\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Product\"]}}],\"systemSeriesColors\": [{\"serieName\": \"f421590a-ccbc-444f-bfd5-8dffda87a39e\",\"color\": \"#48D1E0\"},{\"serieName\": \"cf0d159d-d8b8-4923-b73a-f4e7cf293a5f\",\"color\": \"#2E75F0\"},{\"serieName\": \"Total sales\",\"color\": \"#06BF7F\"}]}"
+      display_mode: TABLE_MODE
+    viz_guid: 252dec0d-6e78-4e82-afe8-64254b01a223
+  - id: Viz_4
+    answer:
+      name: Cumulative Sales by Date for eggs and cookies
+      tables:
+      - id: trial model
+        name: trial model
+        fqn: 00b6880c-2af3-4174-869f-9b6c5f598b04
+      formulas:
+      - id: formula_cumulative sales
+        name: cumulative sales
+        expr: "cumulative_sum ( [formula_sales] , [Date] )"
+        was_auto_generated: false
+      - id: formula_inventory
+        name: inventory
+        expr: "[Quantity Purchased] * [Unit Cost Usd]"
+        was_auto_generated: false
+      - id: formula_sales
+        name: sales
+        expr: "[Quantity Sold] * [Unit Retail Price Usd]"
+        was_auto_generated: false
+      search_query: "[Date] [Date].daily [Product].cookies [Product].eggs [Product] [formula_cumulative sales]"
+      answer_columns:
+      - name: Day(Date)
+      - name: Product
+      - name: cumulative sales
+        format:
+          category: CURRENCY
+          currencyFormatConfig:
+            locale: USD
+            unit: AUTO
+            decimals: 2.0
+            toSeparateThousands: true
+          isCategoryEditable: true
+      table:
+        table_columns:
+        - column_id: Day(Date)
+          show_headline: false
+        - column_id: Product
+          show_headline: false
+        - column_id: cumulative sales
+          show_headline: false
+        ordered_column_ids:
+        - Day(Date)
+        - Product
+        - cumulative sales
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: LINE
+        chart_columns:
+        - column_id: Day(Date)
+        - column_id: Product
+        - column_id: cumulative sales
+        axis_configs:
+        - x:
+          - Day(Date)
+          "y":
+          - cumulative sales
+          color:
+          - Product
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Day(Date)\",\"columnProperty\": {}},{\"columnId\": \"Product\",\"columnProperty\": {}},{\"columnId\": \"cumulative sales\",\"columnProperty\": {\"dataLabels\": true}}],\"axisProperties\": [{\"id\": \"1aaa63fa-8ba2-43e3-b155-89584d58b232\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"cumulative sales\"],\"isOpposite\": false}},{\"id\": \"f5140f08-be6a-4a1c-9949-289d1be01a56\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Day(Date)\"],\"name\": \"Date\"}}],\"systemSeriesColors\": [{\"serieName\": \"7acac441-1f04-4828-9fbf-79ce58445e8e\",\"color\": \"#06BF7F\"},{\"serieName\": \"cookies\",\"color\": \"#2E75F0\"},{\"serieName\": \"eggs\",\"color\": \"#48D1E0\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 406e84a3-790a-4db6-9689-9ebe5428122e
+  - id: Viz_5
+    answer:
+      name: cashflow ratio by Weekly Date
+      tables:
+      - id: trial model
+        name: trial model
+        fqn: 00b6880c-2af3-4174-869f-9b6c5f598b04
+      formulas:
+      - id: formula_cashflow ratio
+        name: cashflow ratio
+        expr: "sum ( [formula_sales] ) / sum ( [formula_inventory] )"
+        was_auto_generated: false
+      - id: formula_cumulative sales
+        name: cumulative sales
+        expr: "cumulative_sum ( [formula_sales] , [Date] )"
+        was_auto_generated: false
+      - id: formula_inventory
+        name: inventory
+        expr: "[Quantity Purchased] * [Unit Cost Usd]"
+        was_auto_generated: false
+      - id: formula_sales
+        name: sales
+        expr: "[Quantity Sold] * [Unit Retail Price Usd]"
+        was_auto_generated: false
+      search_query: "[formula_cashflow ratio] [Date].weekly"
+      answer_columns:
+      - name: Week(Date)
+      - name: cashflow ratio
+      table:
+        table_columns:
+        - column_id: Week(Date)
+          show_headline: false
+        - column_id: cashflow ratio
+          show_headline: false
+        ordered_column_ids:
+        - Week(Date)
+        - cashflow ratio
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"columnProperties\": [{\"columnId\": \"cashflow ratio\",\"columnProperty\": {}}]}"
+      chart:
+        type: LINE
+        chart_columns:
+        - column_id: Week(Date)
+        - column_id: cashflow ratio
+        axis_configs:
+        - x:
+          - Week(Date)
+          "y":
+          - cashflow ratio
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"gridLines\": {},\"responsiveLayoutPreference\": \"USER_PREFERRED_ON\",\"chartSpecific\": {\"dataFieldArea\": \"column\"}},\"columnProperties\": [{\"columnId\": \"Week(Date)\",\"columnProperty\": {}},{\"columnId\": \"cashflow ratio\",\"columnProperty\": {\"dataLabels\": true}}],\"axisProperties\": [{\"id\": \"1c8c1e15-ccc9-4658-b3c3-6e86b857a128\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"cashflow ratio\"],\"isOpposite\": false}},{\"id\": \"1661eb25-b922-4ff7-9161-e568fae0bd3a\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Week(Date)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"cashflow ratio\",\"color\": \"#06BF7F\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: e8ce1a7d-c485-4a5e-a93f-4dbbc137f80a
+  - id: Viz_6
+    answer:
+      name: Total demo 2 by Product Name
+      tables:
+      - id: trial model
+        name: trial model
+        fqn: 00b6880c-2af3-4174-869f-9b6c5f598b04
+      search_query: "[demo 2] [Product] [Unit Retail Price Usd]"
+      answer_columns:
+      - name: Product
+      - name: Total Unit Retail Price Usd
+      - name: Total demo 2
+      table:
+        table_columns:
+        - column_id: Product
+          show_headline: false
+        - column_id: Total Unit Retail Price Usd
+          show_headline: false
+        - column_id: Total demo 2
+          show_headline: false
+        ordered_column_ids:
+        - Product
+        - Total demo 2
+        - Total Unit Retail Price Usd
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: ADVANCED_PIVOT_TABLE
+        chart_columns:
+        - column_id: Measure names
+          type: MEASURE_NAMES
+        - column_id: Product
+        - column_id: Total Unit Retail Price Usd
+        - column_id: Total demo 2
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Product\",\"columnProperty\": {\"kpiColumnProperties\": {\"showAbbreviatedPreviousDate\": false,\"showSparkline\": true,\"showComparisonDate\": true}}},{\"columnId\": \"Total demo 2\",\"columnProperty\": {\"kpiColumnProperties\": {\"showAbbreviatedPreviousDate\": false,\"showSparkline\": true,\"showComparisonDate\": true}}},{\"columnId\": \"Total Unit Retail Price Usd\",\"columnProperty\": {\"kpiColumnProperties\": {\"showAbbreviatedPreviousDate\": false,\"showSparkline\": true,\"showComparisonDate\": true}}},{\"columnId\": \"Measure names\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"4ac1a7f7-2e85-4a9d-a7de-f3c202c3e148\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total demo 2\"],\"isOpposite\": false}},{\"id\": \"590e9288-2241-4cb5-a09b-f947cd50d1c9\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Product\",\"Measure names\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Total demo 2\",\"color\": \"#48D1E0\"}]}"
+        custom_chart_config:
+        - key: basic
+          dimensions:
+          - key: rows
+            columns:
+            - Product
+            mode: COLUMN_DRIVEN
+          - key: values
+            columns:
+            - Total demo 2
+            mode: COLUMN_DRIVEN
+          - key: columns
+            columns:
+            - Measure names
+            mode: COLUMN_DRIVEN
+        custom_visual_props: "{}"
+      display_mode: CHART_MODE
+      parameter_values:
+      - key: b
+        value: "2"
+    viz_guid: 37dab3bf-9259-46af-841a-22db596726ed
+  - id: Viz_7
+    answer:
+      name: "Total Unit Cost Usd, Total Sales by Product_type"
+      tables:
+      - id: trial model
+        name: trial model
+        fqn: 00b6880c-2af3-4174-869f-9b6c5f598b04
+      search_query: "[Unit Cost Usd] [Sales] [type]"
+      answer_columns:
+      - name: Total Sales
+      - name: Total Unit Cost Usd
+      - name: type
+      table:
+        table_columns:
+        - column_id: Total Sales
+          show_headline: false
+        - column_id: Total Unit Cost Usd
+          show_headline: false
+        - column_id: type
+          show_headline: false
+        ordered_column_ids:
+        - type
+        - Total Unit Cost Usd
+        - Total Sales
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"columnProperties\": [{\"columnId\": \"type\",\"columnProperty\": {}},{\"columnId\": \"Total Unit Cost Usd\",\"columnProperty\": {}},{\"columnId\": \"Total Sales\",\"columnProperty\": {}}]}"
+      chart:
+        type: COLUMN
+        chart_columns:
+        - column_id: Total Sales
+        - column_id: Total Unit Cost Usd
+        - column_id: type
+        axis_configs:
+        - x:
+          - type
+          "y":
+          - Total Unit Cost Usd
+          - Total Sales
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"gridLines\": {},\"responsiveLayoutPreference\": \"USER_PREFERRED_ON\",\"chartSpecific\": {\"dataFieldArea\": \"column\"}},\"columnProperties\": [{\"columnId\": \"type\",\"columnProperty\": {}},{\"columnId\": \"Total Unit Cost Usd\",\"columnProperty\": {}},{\"columnId\": \"Total Sales\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"6a31d972-7145-4998-b18d-a566b80da4e5\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Unit Cost Usd\"],\"isOpposite\": false}},{\"id\": \"48bd8417-01b6-4a81-a589-e5b61f6b6e7b\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Sales\"],\"isOpposite\": true}},{\"id\": \"284d6443-c75f-4286-bcf0-bee6e047bb21\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"type\"]}}]}"
+      display_mode: CHART_MODE
+    viz_guid: c54d8438-642e-4dfc-89eb-fab526dcb72c
+  - id: Viz_8
+    answer:
+      name: Total sales and Total Inventory by Product
+      tables:
+      - id: trial model
+        name: trial model
+        fqn: 00b6880c-2af3-4174-869f-9b6c5f598b04
+      formulas:
+      - id: formula_sales
+        name: sales
+        expr: "[Quantity Sold] * [Unit Retail Price Usd]"
+        was_auto_generated: false
+      - id: formula_Inventory
+        name: Inventory
+        expr: "if ( [Quantity Purchased] != null ) then [Quantity Purchased] * [Unit Cost Usd] else null"
+        was_auto_generated: false
+      search_query: "[Product] [formula_sales] [Is Holiday] = 1"
+      answer_columns:
+      - name: Product
+      - name: Total sales
+        format:
+          category: CURRENCY
+          currencyFormatConfig:
+            locale: USD
+            unit: AUTO
+            decimals: 2.0
+            toSeparateThousands: true
+          isCategoryEditable: true
+      table:
+        table_columns:
+        - column_id: Product
+          show_headline: false
+        - column_id: Total sales
+          show_headline: false
+        ordered_column_ids:
+        - Product
+        - Total sales
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"orderedColumnIds\": [\"Product\"]}"
+      chart:
+        type: COLUMN
+        chart_columns:
+        - column_id: Product
+        - column_id: Total sales
+        axis_configs:
+        - x:
+          - Product
+          "y":
+          - Total sales
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Product\",\"columnProperty\": {}},{\"columnId\": \"Total sales\",\"columnProperty\": {\"dataLabels\": true}}],\"axisProperties\": [{\"id\": \"938f2f1c-889c-440e-ac6f-c002be5ef37f\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total sales\"],\"isOpposite\": false}},{\"id\": \"fef59593-d8a8-4c3f-86e0-ccfa737181d6\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Product\"]}}],\"seriesColors\": [{\"serieName\": \"e648abe9-833a-48fe-a841-29f85c2fca18\",\"color\": \"#48D1E0\"},{\"serieName\": \"39727204-732f-4704-8678-160ba0894a5c\",\"color\": \"#2E75F0\"},{\"serieName\": \"Total sales\",\"color\": \"#06BF7F\"},{\"serieName\": \"d399e7cb-b484-48eb-a9c2-dfa467b31433\",\"color\": \"#48D1E0\"}],\"systemSeriesColors\": [{\"serieName\": \"e648abe9-833a-48fe-a841-29f85c2fca18\",\"color\": \"#48D1E0\"},{\"serieName\": \"39727204-732f-4704-8678-160ba0894a5c\",\"color\": \"#2E75F0\"},{\"serieName\": \"Total sales\",\"color\": \"#06BF7F\"},{\"serieName\": \"d399e7cb-b484-48eb-a9c2-dfa467b31433\",\"color\": \"#FCC838\"}]}"
+      display_mode: CHART_MODE
+      parameter_values:
+      - key: b
+        value: "1"
+    viz_guid: beafdb93-87c6-4b22-a716-059a082fccee
+  - id: Viz_9
+    answer:
+      name: Total Settlementamount by Sinnumber
+      tables:
+      - id: email test
+        name: email test
+        fqn: 196b4cda-3a5c-4643-8b7f-f7f8884606b1
+      search_query: "[Sinnumber] [Settlementamount] [Settlementamount] [Sinnumber] [Consultantemail]"
+      answer_columns:
+      - name: Consultantemail
+      - name: Sinnumber
+      - name: Total Settlementamount
+      table:
+        table_columns:
+        - column_id: Consultantemail
+          show_headline: false
+        - column_id: Sinnumber
+          show_headline: false
+        - column_id: Total Settlementamount
+          show_headline: false
+        ordered_column_ids:
+        - Sinnumber
+        - Consultantemail
+        - Total Settlementamount
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"widthState\": [{\"columnId\": \"Total Settlementamount\",\"width\": 659.0},{\"columnId\": \"Consultantemail\",\"width\": 451.0}],\"columnProperties\": [{\"columnId\": \"Sinnumber\",\"columnProperty\": {}},{\"columnId\": \"Consultantemail\",\"columnProperty\": {}},{\"columnId\": \"Total Settlementamount\",\"columnProperty\": {}}]}"
+      chart:
+        type: PIVOT_TABLE
+        chart_columns:
+        - column_id: Consultantemail
+        - column_id: Measure names
+          type: MEASURE_NAMES
+        - column_id: Measure values
+          type: MEASURE_VALUES
+        - column_id: Sinnumber
+        - column_id: Total Settlementamount
+        axis_configs:
+        - x:
+          - Sinnumber
+          "y":
+          - Measure values
+          color:
+          - Measure names
+          measure_values:
+          - Total Settlementamount
+        - "y":
+          - Measure values
+          measure_values:
+          - Total Settlementamount
+        - x:
+          - Sinnumber
+          "y":
+          - Measure values
+          measure_values:
+          - Total Settlementamount
+        - "y":
+          - Measure values
+          color:
+          - Measure names
+          measure_values:
+          - Total Settlementamount
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"gridLines\": {},\"responsiveLayoutPreference\": \"USER_PREFERRED_ON\",\"chartSpecific\": {\"pivotState\": {\"fields\": [{\"dataField\": \"Measure names\",\"sortBy\": \"value\",\"sortBySummaryField\": \"Measure names\",\"sortOrder\": \"\",\"expanded\": true,\"area\": \"column\"},{\"dataField\": \"Sinnumber\",\"sortBy\": \"value\",\"sortBySummaryField\": \"\",\"sortOrder\": \"\",\"expanded\": true,\"area\": \"row\"}]},\"isStackedAsPercent\": false,\"dataFieldArea\": \"column\"}},\"columnProperties\": [{\"columnId\": \"Sinnumber\",\"columnProperty\": {}},{\"columnId\": \"Consultantemail\",\"columnProperty\": {}},{\"columnId\": \"Total Settlementamount\",\"columnProperty\": {}},{\"columnId\": \"Measure names\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"014ec556-b0bb-4044-8d92-bf97baab5105\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Settlementamount\"],\"isOpposite\": false}},{\"id\": \"608ee334-28da-4180-b0f3-97bbe56dd904\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Sinnumber\"]}}]}"
+        custom_visual_props: "{}"
+      display_mode: CHART_MODE
+    viz_guid: f36911bb-b491-45ff-a59c-870c49f3d70d
+  - id: Viz_10
+    answer:
+      name: Total Unit Cost Usd by Product Name
+      description: "Product Name \"eggs\", \"cheese\" have significantly higher Total Unit Cost Usd out of 9 values."
+      tables:
+      - id: (Sample) Retail - Apparel
+        name: (Sample) Retail - Apparel
+        fqn: cd252e5c-b552-49a8-821d-3eadaa049cca
+      search_query: "[quantity purchased] [sales] [item type] count [product]"
+      answer_columns:
+      - name: Number of product
+      - name: Total quantity purchased
+      - name: Total sales
+      - name: item type
+      table:
+        table_columns:
+        - column_id: Number of product
+          show_headline: false
+        - column_id: Total quantity purchased
+          show_headline: false
+        - column_id: Total sales
+          show_headline: false
+        - column_id: item type
+          show_headline: false
+        ordered_column_ids:
+        - item type
+        - Total quantity purchased
+        - Total sales
+        - Number of product
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: LINE_COLUMN
+        chart_columns:
+        - column_id: Number of product
+        - column_id: Total quantity purchased
+        - column_id: Total sales
+        - column_id: item type
+        axis_configs:
+        - x:
+          - item type
+          "y":
+          - Total quantity purchased
+          - Total sales
+          - Number of product
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"item type\",\"columnProperty\": {}},{\"columnId\": \"Total quantity purchased\",\"columnProperty\": {}},{\"columnId\": \"Total sales\",\"columnProperty\": {}},{\"columnId\": \"Measure names\",\"columnProperty\": {}},{\"columnId\": \"Measure values\",\"columnProperty\": {}},{\"columnId\": \"Number of product\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"b64ffa0e-2f92-467a-9e12-a74602b37327\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total quantity purchased\"],\"isOpposite\": false}},{\"id\": \"83f3e81d-5bac-4436-928b-cb663159eda4\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total sales\"],\"isOpposite\": true}},{\"id\": \"cfcc3263-78d0-4739-8859-a3924755ad80\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Number of product\"],\"isOpposite\": true}},{\"id\": \"ee019a6a-93f1-484c-a427-bceb50f9eb3c\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"item type\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Total quantity purchased\",\"color\": \"#48D1E0\"},{\"serieName\": \"Total sales\",\"color\": \"#2E75F0\"},{\"serieName\": \"Number of product\",\"color\": \"#FCC838\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: d395d4fb-a8fa-407b-a9ea-f46d407c4d90
+  - id: Viz_11
+    answer:
+      name: Total Sales by Product Name
+      tables:
+      - id: trial model
+        name: trial model
+        fqn: 00b6880c-2af3-4174-869f-9b6c5f598b04
+      search_query: "[Sales] [Product]"
+      answer_columns:
+      - name: Product
+      - name: Total Sales
+      table:
+        table_columns:
+        - column_id: Product
+          show_headline: false
+        - column_id: Total Sales
+          show_headline: false
+        ordered_column_ids:
+        - Product
+        - Total Sales
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"columnProperties\": [{\"columnId\": \"Product\",\"columnProperty\": {}},{\"columnId\": \"Total Sales\",\"columnProperty\": {}}]}"
+      chart:
+        type: COLUMN
+        chart_columns:
+        - column_id: Product
+        - column_id: Total Sales
+        axis_configs:
+        - x:
+          - Product
+          "y":
+          - Total Sales
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"gridLines\": {},\"responsiveLayoutPreference\": \"USER_PREFERRED_ON\",\"chartSpecific\": {\"dataFieldArea\": \"column\"}},\"columnProperties\": [{\"columnId\": \"Product\",\"columnProperty\": {}},{\"columnId\": \"Total Sales\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"a49deb19-87d6-4eb5-a053-52019a9abf4f\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Sales\"],\"isOpposite\": false}},{\"id\": \"077cf9ac-2f1a-4a44-a397-f09e61eb4350\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Product\"]}}]}"
+      display_mode: CHART_MODE
+    viz_guid: 0ccd7ed6-4394-48e5-8498-1ff2ea129a88
+  - id: Viz_12
+    answer:
+      name: Total RANDOM_VALUE by DATE_COLUMN
+      tables:
+      - id: FUTURE_DATES
+        name: FUTURE_DATES
+        fqn: 8a5dbe1b-0d65-47ad-aa26-29bd81fdc2e6
+      search_query: "[DATE_COLUMN] [DATE_COLUMN].detailed [RANDOM_VALUE]"
+      answer_columns:
+      - name: DATE_COLUMN
+      - name: Total RANDOM_VALUE
+      table:
+        table_columns:
+        - column_id: DATE_COLUMN
+          show_headline: false
+        - column_id: Total RANDOM_VALUE
+          show_headline: false
+        ordered_column_ids:
+        - DATE_COLUMN
+        - Total RANDOM_VALUE
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"columnProperties\": [{\"columnId\": \"DATE_COLUMN\",\"columnProperty\": {}},{\"columnId\": \"Total RANDOM_VALUE\",\"columnProperty\": {}}]}"
+      chart:
+        type: LINE
+        chart_columns:
+        - column_id: DATE_COLUMN
+        - column_id: Total RANDOM_VALUE
+        axis_configs:
+        - x:
+          - DATE_COLUMN
+          "y":
+          - Total RANDOM_VALUE
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"markersEnabled\": false,\"pivotSummariesState\": {}},\"showStackedLabels\": false,\"allLabels\": false},\"columnProperties\": [{\"columnId\": \"DATE_COLUMN\",\"columnProperty\": {}},{\"columnId\": \"c351d9d4-1e85-42e8-993d-7cf9e21b5a36\",\"columnProperty\": {}},{\"columnId\": \"6929a66a-378f-4203-b1f2-b304bdc2f191\",\"columnProperty\": {}},{\"columnId\": \"Total RANDOM_VALUE\",\"columnProperty\": {\"dataLabels\": false}}],\"axisProperties\": [{\"id\": \"662ed9b3-260d-4ca5-8b60-1693170e7149\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total RANDOM_VALUE\"],\"isOpposite\": false}},{\"id\": \"e4c52bf9-a4cf-4121-b7d7-38f6c469ffa7\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"DATE_COLUMN\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Total RANDOM_VALUE\",\"color\": \"#2E75F0\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 8e67054c-b0b8-412e-aa93-7f65564648e1
+  - id: Viz_13
+    answer:
+      name: Total Sales by Product Name
+      tables:
+      - id: trial model
+        name: trial model
+        fqn: 00b6880c-2af3-4174-869f-9b6c5f598b04
+      search_query: "[Product] [Sales] [Product] != 'cheese'"
+      answer_columns:
+      - name: Product
+      - name: Total Sales
+      table:
+        table_columns:
+        - column_id: Product
+          show_headline: false
+        - column_id: Total Sales
+          show_headline: false
+        ordered_column_ids:
+        - Product
+        - Total Sales
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: COLUMN
+        chart_columns:
+        - column_id: Product
+        - column_id: Total Sales
+        axis_configs:
+        - x:
+          - Product
+          "y":
+          - Total Sales
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Product\",\"columnProperty\": {}},{\"columnId\": \"Total Sales\",\"columnProperty\": {}},{\"columnId\": \"7edcf656-0931-481c-a0e8-d40ff2fc0e42\",\"columnProperty\": {}},{\"columnId\": \"f63204ac-9f21-4c86-bd14-9c025e6b1b82\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"da013aa2-9139-4f56-9b62-6de42f40b468\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Sales\"],\"isOpposite\": false}},{\"id\": \"9fe6bfb7-1a21-4c34-b8fc-bc13e9985085\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Product\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Total Sales\",\"color\": \"#2E75F0\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 55b405f5-a68c-48ea-ad34-d92aaf47b84d
+  - id: Viz_14
+    answer:
+      name: Total Total Sales by Product Name
+      tables:
+      - id: TP view
+        name: TP view
+        fqn: 1b1d33b5-5ce0-4449-9370-76ed27206d04
+      search_query: "[Product Name] [Total Sales]"
+      answer_columns:
+      - name: Product Name
+      - name: Total Total Sales
+      table:
+        table_columns:
+        - column_id: Product Name
+          show_headline: false
+        - column_id: Total Total Sales
+          show_headline: false
+        ordered_column_ids:
+        - Product Name
+        - Total Total Sales
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: COLUMN
+        chart_columns:
+        - column_id: Product Name
+        - column_id: Total Total Sales
+        axis_configs:
+        - x:
+          - Product Name
+          "y":
+          - Total Total Sales
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Product Name\",\"columnProperty\": {}},{\"columnId\": \"Total Total Sales\",\"columnProperty\": {}},{\"columnId\": \"Measure names\",\"columnProperty\": {}},{\"columnId\": \"Measure values\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"cb5e57ef-7ad2-4412-9e5d-2fd757f01921\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Total Sales\"],\"isOpposite\": false}},{\"id\": \"1e76e5b4-d382-491c-a412-8236a04a337f\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Product Name\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Total Total Sales\",\"color\": \"#2E75F0\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: e15aa56e-a206-4c59-bec5-53f04bedf7bb
+  - id: Viz_15
+    viz_guid: 50bdfa40-844a-4d5f-b857-07262bc0dcf1
+    note_tile:
+      html_parsed_string: "<h1 class=\"theme-module__editor-h1\" dir=\"ltr\" style=\"text-align: center;\"><span style=\"color: rgb(255, 255, 255); white-space: pre-wrap;\">Liveboard Overview</span></h1><div class=\"pinboard-note-tile-module__noteTileBg editor-module__bgNode\" style=\"background-color: rgb(86, 211, 168);\"></div>"
+  - id: Viz_16
+    answer:
+      name: Total sales by item type
+      tables:
+      - id: (Sample) Retail - Apparel
+        name: (Sample) Retail - Apparel
+        fqn: cd252e5c-b552-49a8-821d-3eadaa049cca
+      search_query: "[sales] [date].monthly [date].'last 6 months'"
+      answer_columns:
+      - name: Month(date)
+      - name: Total sales
+      table:
+        table_columns:
+        - column_id: Month(date)
+          show_headline: false
+        - column_id: Total sales
+          show_headline: false
+        ordered_column_ids:
+        - Month(date)
+        - Total sales
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: LINE
+        chart_columns:
+        - column_id: Month(date)
+        - column_id: Total sales
+        axis_configs:
+        - x:
+          - Month(date)
+          "y":
+          - Total sales
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}},\"kpiDisplayProperties\": {\"showDateLabel\": true,\"showCurrentDateLabel\": true,\"showPreviousDateLabel\": true,\"showPreviousValue\": true,\"showChange\": true,\"showChangeAs\": \"PERCENT\",\"changeInterpretation\": \"UPWARD_IS_GOOD\"}},\"columnProperties\": [{\"columnId\": \"Month(date)\",\"columnProperty\": {\"kpiColumnProperties\": {\"showSparkline\": true,\"showComparisonDate\": true}}},{\"columnId\": \"Total sales\",\"columnProperty\": {\"kpiColumnProperties\": {\"showSparkline\": true,\"showComparisonDate\": true}}},{\"columnId\": \"Measure names\",\"columnProperty\": {\"kpiColumnProperties\": {\"showSparkline\": true,\"showComparisonDate\": true}}},{\"columnId\": \"Measure values\",\"columnProperty\": {\"kpiColumnProperties\": {\"showSparkline\": true,\"showComparisonDate\": true}}}],\"axisProperties\": [{\"id\": \"10049baa-f59f-42e0-953e-64d4e7fc1312\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total sales\"],\"isOpposite\": false}},{\"id\": \"54c94678-3e9f-46ed-b565-ccdef73f86c0\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Month(date)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Total sales\",\"color\": \"#2E75F0\"}]}"
+      display_mode: CHART_MODE
+      dynamic_name: Total sales by item type
+    viz_guid: ef0e457f-4dd7-44fa-be95-9ecb6dd07503
+  - id: Viz_17
+    answer:
+      name: Total sales by item type
+      tables:
+      - id: (Sample) Retail - Apparel
+        name: (Sample) Retail - Apparel
+        fqn: cd252e5c-b552-49a8-821d-3eadaa049cca
+      formulas:
+      - id: formula_master date
+        name: master date
+        expr: "if ( [grain selector] = 'daily' ) then [date] else if ( [grain selector] = 'weekly' ) then start_of_week ( [date] ) else if ( [grain selector] = 'monthly' ) then start_of_month ( [date] ) else if ( [grain selector] = 'yearly' ) then start_of_year ( [date] ) else null"
+        was_auto_generated: false
+      search_query: "[sales] [formula_master date] [formula_master date].daily"
+      answer_columns:
+      - name: Day(master date)
+        custom_name: monthly  master date
+        dynamic_title: "[${PARAMETER:grain selector}]  master date"
+      - name: Total sales
+      table:
+        table_columns:
+        - column_id: Day(master date)
+          show_headline: false
+        - column_id: Total sales
+          show_headline: false
+        ordered_column_ids:
+        - Day(master date)
+        - Total sales
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Day(master date)
+        - column_id: Total sales
+        axis_configs:
+        - x:
+          - Day(master date)
+          "y":
+          - Total sales
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"stackedAsPercentFormat\": {\"category\": \"PERCENTAGE\",\"percentageFormatConfig\": {\"decimals\": 2.0,\"removeTrailingZeroes\": false},\"isCategoryEditable\": false},\"customProps\": \"{\\\"tileType\\\":null,\\\"advancedProperties\\\":{\\\"tooltip\\\":{\\\"enabled\\\":true,\\\"borderWidth\\\":\\\"1\\\",\\\"opacity\\\":\\\"\\\",\\\"label\\\":{},\\\"value\\\":{}},\\\"regression\\\":{\\\"lineWidth\\\":\\\"\\\"},\\\"gridlines\\\":{\\\"xAxis\\\":{},\\\"yAxis\\\":{}},\\\"answerLevelSettings\\\":{\\\"chart\\\":{\\\"backgroundStyle\\\":null},\\\"plotArea\\\":{\\\"backgroundStyle\\\":null},\\\"borderColor\\\":\\\"\\\",\\\"borderWidth\\\":\\\"\\\",\\\"connectingLines\\\":false},\\\"stackLabelStyles\\\":{\\\"align\\\":\\\"center\\\",\\\"backgroundColor\\\":\\\"\\\",\\\"borderColor\\\":\\\"\\\",\\\"borderWidth\\\":\\\"1\\\",\\\"maxCharacters\\\":\\\"\\\",\\\"style\\\":{}}},\\\"showLabel\\\":true,\\\"showComparison\\\":true,\\\"showSparkline\\\":true,\\\"showAnalyseChangeCta\\\":true,\\\"showAnomalies\\\":null,\\\"customCompare\\\":\\\"PREV_YEAR\\\"}\",\"pivotSummariesState\": {}},\"kpiDisplayProperties\": {\"showChange\": true,\"showChangeAs\": \"PERCENT\",\"changeInterpretation\": \"UPWARD_IS_GOOD\"}},\"columnProperties\": [{\"columnId\": \"Total sales\",\"columnProperty\": {\"customProps\": \"{\\\"advancedProperties\\\":{\\\"dataLabels\\\":{\\\"align\\\":\\\"center\\\",\\\"backgroundColor\\\":\\\"\\\",\\\"borderColor\\\":\\\"\\\",\\\"borderWidth\\\":\\\"1\\\",\\\"filter\\\":null,\\\"maxCharacters\\\":\\\"\\\",\\\"style\\\":{\\\"isLinked\\\":false,\\\"linkedTo\\\":null}},\\\"enableMarkers\\\":null,\\\"lineStyle\\\":null,\\\"markerStyle\\\":null}}\",\"kpiColumnProperties\": {\"showAbbreviatedPreviousDate\": false,\"abbreviatedPreviousDate\": \"\",\"showSparkline\": true,\"showComparisonDate\": true,\"showCurrentDateLabel\": false,\"showPreviousDateLabel\": false,\"showPreviousValue\": false}}},{\"columnId\": \"Measure names\",\"columnProperty\": {\"customProps\": \"{\\\"advancedProperties\\\":{\\\"dataLabels\\\":{\\\"align\\\":\\\"center\\\",\\\"backgroundColor\\\":\\\"\\\",\\\"borderColor\\\":\\\"\\\",\\\"borderWidth\\\":\\\"1\\\",\\\"filter\\\":null,\\\"maxCharacters\\\":\\\"\\\",\\\"style\\\":{\\\"isLinked\\\":false,\\\"linkedTo\\\":null}},\\\"enableMarkers\\\":null,\\\"lineStyle\\\":null,\\\"markerStyle\\\":null}}\",\"kpiColumnProperties\": {\"showAbbreviatedPreviousDate\": false,\"abbreviatedPreviousDate\": \"\",\"showSparkline\": true,\"showComparisonDate\": true,\"showCurrentDateLabel\": false,\"showPreviousDateLabel\": false,\"showPreviousValue\": false}}},{\"columnId\": \"Measure values\",\"columnProperty\": {\"customProps\": \"{\\\"advancedProperties\\\":{\\\"dataLabels\\\":{\\\"align\\\":\\\"center\\\",\\\"backgroundColor\\\":\\\"\\\",\\\"borderColor\\\":\\\"\\\",\\\"borderWidth\\\":\\\"1\\\",\\\"filter\\\":null,\\\"maxCharacters\\\":\\\"\\\",\\\"style\\\":{\\\"isLinked\\\":false,\\\"linkedTo\\\":null}},\\\"enableMarkers\\\":null,\\\"lineStyle\\\":null,\\\"markerStyle\\\":null}}\",\"kpiColumnProperties\": {\"showAbbreviatedPreviousDate\": false,\"abbreviatedPreviousDate\": \"\",\"showSparkline\": true,\"showComparisonDate\": true,\"showCurrentDateLabel\": false,\"showPreviousDateLabel\": false,\"showPreviousValue\": false}}},{\"columnId\": \"Day(master date)\",\"columnProperty\": {\"customProps\": \"{\\\"advancedProperties\\\":{\\\"dataLabels\\\":{\\\"align\\\":\\\"center\\\",\\\"backgroundColor\\\":\\\"\\\",\\\"borderColor\\\":\\\"\\\",\\\"borderWidth\\\":\\\"1\\\",\\\"filter\\\":null,\\\"maxCharacters\\\":\\\"\\\",\\\"style\\\":{\\\"isLinked\\\":false,\\\"linkedTo\\\":null}},\\\"enableMarkers\\\":null,\\\"lineStyle\\\":null,\\\"markerStyle\\\":null},\\\"customCompare\\\":\\\"PREV_YEAR\\\"}\",\"kpiColumnProperties\": {\"showAbbreviatedPreviousDate\": false,\"showSparkline\": true,\"showComparisonDate\": true,\"showCurrentDateLabel\": true,\"showPreviousDateLabel\": true,\"showPreviousValue\": true}}}],\"axisProperties\": [{\"id\": \"649ea124-6896-4319-b20a-c996bd5fc72e\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total sales\"],\"isOpposite\": false,\"customProps\": \"{\\\"advancedProperties\\\":{\\\"axisSettings\\\":{\\\"visible\\\":true,\\\"axisName\\\":{\\\"isLinked\\\":false,\\\"isAxisNameVisible\\\":true}},\\\"labels\\\":{\\\"isLinked\\\":false,\\\"enabled\\\":true,\\\"maxCharacters\\\":\\\"\\\"},\\\"ticks\\\":{\\\"showTicks\\\":false,\\\"tickWidth\\\":\\\"1\\\",\\\"tickLength\\\":\\\"5\\\",\\\"tickColor\\\":\\\"#5E5E5E\\\"}}}\"}},{\"id\": \"dfea78a2-b0d8-4542-b630-da9de5a2d498\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Day(master date)\"],\"customProps\": \"{\\\"advancedProperties\\\":{\\\"axisSettings\\\":{\\\"visible\\\":true,\\\"axisName\\\":{\\\"isLinked\\\":false,\\\"isAxisNameVisible\\\":true}},\\\"labels\\\":{\\\"isLinked\\\":false,\\\"enabled\\\":true,\\\"maxCharacters\\\":\\\"\\\"},\\\"ticks\\\":{\\\"showTicks\\\":false,\\\"tickWidth\\\":\\\"1\\\",\\\"tickLength\\\":\\\"5\\\",\\\"tickColor\\\":\\\"#5E5E5E\\\"}}}\"}}],\"systemSeriesColors\": [{\"serieName\": \"Total sales\",\"color\": \"#2E75F0\"}]}"
+      display_mode: CHART_MODE
+      parameters:
+      - id: a0d339fe-afdb-4c79-80a9-c3d8b0b81e0e
+        name: grain selector
+        data_type: CHAR
+        default_value: monthly
+        list_config:
+          list_choice:
+          - value: daily
+          - value: weekly
+          - value: monthly
+          - value: yearly
+        description: ""
+      dynamic_name: Total sales by item type
+    viz_guid: 746fa66e-8d36-4a89-a867-8afc779986df
+  groups:
+  - id: Group_1
+    name: Overview
+    visualizations:
+    - Viz_2
+    - Viz_4
+    - Viz_1
+    - Viz_15
+    group_guid: afb891c0-63a1-4b99-86b4-4cf2728a1ec5
+  filters:
+  - column:
+    - email test::Consultantemail
+    is_mandatory: false
+    is_single_value: false
+    display_name: ""
+  - column:
+    - trial model::Product
+    oper: in
+    values:
+    - eggs
+    excluded_visualizations:
+    - Viz_2
+    - Viz_3
+    - Viz_4
+    - Viz_5
+    - Viz_6
+    - Viz_7
+    - Viz_8
+    - Viz_10
+    is_mandatory: false
+    is_single_value: false
+    display_name: ""
+  - column:
+    - trial model::Date
+    is_mandatory: false
+    is_single_value: false
+    display_name: ""
+  layout:
+    tabs:
+    - name: |-
+        <img style="width: 40px; height: 30px;" alt="Category Market Overview" src="https://w7.pngwing.com/pngs/866/721/png-transparent-magnifying-glass-market-analysis-market-research-company-analytic-text-service-logo.png">
+         Category Market Overview
+      description: ""
+      tiles:
+      - visualization_id: Viz_3
+        x: 0
+        "y": 10
+        height: 5
+        width: 5
+      - visualization_id: Viz_5
+        x: 5
+        "y": 10
+        height: 4
+        width: 7
+      - visualization_id: Viz_6
+        x: 0
+        "y": 15
+        height: 8
+        width: 12
+      - visualization_id: Viz_7
+        x: 0
+        "y": 23
+        height: 8
+        width: 6
+      - visualization_id: Viz_8
+        x: 6
+        "y": 23
+        height: 8
+        width: 6
+      - visualization_id: Viz_9
+        x: 0
+        "y": 31
+        height: 10
+        width: 6
+      - visualization_id: Viz_10
+        x: 6
+        "y": 31
+        height: 8
+        width: 6
+      - visualization_id: Group_1
+        x: 0
+        "y": 0
+        height: 10
+        width: 12
+      id: 828dd385-1db6-422d-a38a-5eaffcb64c95
+      group_layouts:
+      - id: Group_1
+        tiles:
+        - visualization_id: Viz_1
+          x: 0
+          "y": 5
+          height: 4
+          width: 5
+        - visualization_id: Viz_2
+          x: 0
+          "y": 1
+          height: 4
+          width: 2
+        - visualization_id: Viz_4
+          x: 5
+          "y": 1
+          height: 7
+          width: 7
+        - visualization_id: Viz_15
+          x: 0
+          "y": 0
+          height: 1
+          width: 12
+    - name: Tab2
+      description: ""
+      tiles:
+      - visualization_id: Viz_11
+        x: 6
+        "y": 0
+        height: 8
+        width: 6
+      - visualization_id: Viz_12
+        x: 0
+        "y": 8
+        height: 8
+        width: 6
+      - visualization_id: Viz_13
+        x: 0
+        "y": 16
+        height: 8
+        width: 6
+      - visualization_id: Viz_14
+        x: 6
+        "y": 8
+        height: 8
+        width: 6
+      - visualization_id: Viz_16
+      - visualization_id: Viz_17
+      id: 3831cab2-ff15-4aa5-81cb-f2836e9807ed
+    - name: Marketing
+      description: ""
+      id: c1647033-6860-4135-922b-b0ef520e1543
+  parameter_overrides:
+  - key: 7f1a935a-6be4-4f95-b06c-23bb8581f807
+    value:
+      name: trial model::b
+  ordered_chips:
+  - name: email test::Consultantemail
+    type: FILTER
+  - name: trial model::Product
+    type: FILTER
+  - name: trial model::Date
+    type: FILTER
+  - name: trial model::b
+    type: PARAMETER
+  views:
+  - view_guid: d3f6d816-0b52-453c-bd3e-f688634a176d
+    name: test
+    view_filters:
+    - column:
+      - email test::Consultantemail
+      oper: =
+    - column:
+      - trial model::Product
+      oper: in
+      values:
+      - eggs
+      - "{null}"
+      - cheese
+    - column:
+      - trial model::Date
+      date_filter:
+        type: EXACT_DATE
+        oper: =
+    is_public: true
+    view_parameters:
+    - name: trial model::b
+      id: 7f1a935a-6be4-4f95-b06c-23bb8581f807
+  - view_guid: 83d12f58-692d-490a-976b-dd6874ef4e45
+    name: test
+    view_filters:
+    - column:
+      - email test::Consultantemail
+      oper: =
+    - column:
+      - trial model::Product
+      oper: in
+    - column:
+      - trial model::Date
+      date_filter:
+        type: TOMORROW
+        oper: =
+    is_public: false
+    view_parameters:
+    - name: trial model::b
+      id: 7f1a935a-6be4-4f95-b06c-23bb8581f807
+  - view_guid: 5c7d70c8-6480-44b7-a071-844a395ecbf9
+    name: tes
+    view_filters:
+    - column:
+      - email test::Consultantemail
+      oper: in
+      values:
+      - shubham.sonawane@thoughtspot.com
+    - column:
+      - trial model::Product
+      oper: in
+      values:
+      - eggs
+    - column:
+      - trial model::Date
+      date_filter:
+        type: LAST_N_PERIOD
+        number: 1
+        oper: =
+        date_period: MONTH
+    is_public: false
+    view_parameters:
+    - name: trial model::b
+      id: 7f1a935a-6be4-4f95-b06c-23bb8581f807
+  style:
+    style_properties:
+    - name: lb_border_type
+      value: SHARP
+    - name: lb_brand_color
+      value: LBC_A
+    - name: hide_group_title
+      value: "false"
+    - name: hide_group_description
+      value: "false"
+    - name: hide_group_tile_description
+      value: "false"
+    - name: hide_tile_description
+      value: "false"
+    overrides:
+    - object_id: Viz_4
+      style_properties:
+      - name: tile_brand_color
+        value: TBC_D
+      - name: hide_tile_description
+        value: "false"
+      - name: is_linked
+        value: "false"
+    - object_id: Group_1
+      style_properties:
+      - name: group_brand_color
+        value: GBC_B
+      - name: hide_group_title
+        value: "true"
+      - name: hide_group_description
+        value: "true"
+      - name: hide_group_tile_description
+        value: "false"
+      - name: is_linked
+        value: "false"
