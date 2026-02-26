@@ -1,0 +1,19 @@
+guid: 2fc52b0d-b33b-46c0-ba5f-7724f528ea9c
+table:
+  name: CUSTOMERS
+  db: DB_CASESTUDY
+  schema: SA_CASESTUDY
+  db_table: CUSTOMERS
+  connection:
+    name: Case_study_sa
+    fqn: d119ead1-c43f-457b-a56a-54ca5b2a3a67
+  columns:
+  - name: CUSTOMER_ID
+    db_column_name: CUSTOMER_ID
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  properties:
+    spotter_config:
+      is_spotter_enabled: false
