@@ -1,4 +1,5 @@
 guid: 7e675e2f-93a5-4051-9c1e-2d8ed622554b
+obj_id: case_study_worksheet-dev
 model:
   name: case_study_worksheet
   description: |2-
@@ -47,6 +48,9 @@ model:
   - name: CUSTOMERS
     fqn: 2fc52b0d-b33b-46c0-ba5f-7724f528ea9c
   formulas:
+  - id: formula_Untitled
+    name: Untitled
+    expr: concat ( month ( [D_DATE::DATE]  ) , ' ' , year_name ( [D_DATE::DATE] ) )
   - id: formula_day_of_week
     name: day_of_week
     expr: day_of_week ( [D_DATE::DATE] )
@@ -95,10 +99,6 @@ model:
       - Saturday
       - Friday
       ai_context: Weekly day designation enabling analysis of sales patterns and operational performance across different weekdays
-  - name: Customer Id
-    column_id: CUSTOMERS::CUSTOMER_ID
-    properties:
-      column_type: ATTRIBUTE
   - name: day_of_week
     formula_id: formula_day_of_week
     properties:
@@ -172,6 +172,27 @@ model:
       column_type: ATTRIBUTE
       index_type: DONT_INDEX
       ai_context: Web link reference providing external connectivity to related resources or detailed product information
+  - name: new date
+    formula_id: formula_new date
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      ai_context: Alternative date representation in text format supporting flexible temporal analysis and reporting requirements
+  - name: test dollar
+    formula_id: formula_test dollar
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      ai_context: Text-based monetary test field containing dollar-formatted values for system validation and data quality verification
+  - name: Untitled
+    formula_id: formula_Untitled
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Customer Id
+    column_id: CUSTOMERS::CUSTOMER_ID
+    properties:
+      column_type: ATTRIBUTE
   - name: Product
     description: abc
     column_id: D_PRODUCT::Product
@@ -330,18 +351,6 @@ model:
     properties:
       column_type: ATTRIBUTE
       ai_context: Text-based vendor identifier providing alternative supplier coding system for vendor management processes
-  - name: new date
-    formula_id: formula_new date
-    properties:
-      column_type: ATTRIBUTE
-      index_type: DONT_INDEX
-      ai_context: Alternative date representation in text format supporting flexible temporal analysis and reporting requirements
-  - name: test dollar
-    formula_id: formula_test dollar
-    properties:
-      column_type: ATTRIBUTE
-      index_type: DONT_INDEX
-      ai_context: Text-based monetary test field containing dollar-formatted values for system validation and data quality verification
   properties:
     is_bypass_rls: false
     join_progressive: true
