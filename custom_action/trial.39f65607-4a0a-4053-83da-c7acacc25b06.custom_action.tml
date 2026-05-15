@@ -1,0 +1,8 @@
+guid: 39f65607-4a0a-4053-83da-c7acacc25b06
+action_object:
+  name: trial
+  type: CALLBACK
+  callback_action_details:
+    reference: trial
+  availability: GLOBAL
+  application: NONE

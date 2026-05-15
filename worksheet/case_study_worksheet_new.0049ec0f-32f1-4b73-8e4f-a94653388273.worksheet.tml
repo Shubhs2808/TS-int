@@ -1,6 +1,6 @@
-guid: 7e675e2f-93a5-4051-9c1e-2d8ed622554b
+guid: 0049ec0f-32f1-4b73-8e4f-a94653388273
 model:
-  name: case_study_worksheet
+  name: case_study_worksheet_new
   description: |2-
 
     This worksheet contains data that can be used to understand sales performance of a variety of products. It contains information about the date, product, quantity purchased/sold, sales, type, unit costs/retail prices, and other metrics such as inventory and demo. This data can be used to analyze product performance, identify sales trends, and understand how pricing affects sales. It can also be used to forecast future sales, identify potential problems and opportunities, and optimize store operations. (AI generated)
@@ -47,9 +47,6 @@ model:
   - name: CUSTOMERS
     fqn: 2fc52b0d-b33b-46c0-ba5f-7724f528ea9c
   formulas:
-  - id: formula_Untitled
-    name: Untitled
-    expr: concat ( month ( [D_DATE::DATE]  ) , ' ' , year_name ( [D_DATE::DATE] ) )
   - id: formula_day_of_week
     name: day_of_week
     expr: day_of_week ( [D_DATE::DATE] )
@@ -59,9 +56,6 @@ model:
   - id: formula_demo 2
     name: demo 2
     expr: '[D_PRODUCT::UNIT_RETAIL_PRICE_USD] + [b]'
-  - id: formula_hour
-    name: hour
-    expr: hour_of_day ( [D_DATE::DATE]  )
   - id: formula_hyperlink
     name: hyperlink
     expr: concat ( '<span style="color:#1a0dab;text-decoration:underline;cursor:pointer;">' , [D_PRODUCT::PRODUCT_TYPE] , '</span>' )
@@ -101,6 +95,10 @@ model:
       - Saturday
       - Friday
       ai_context: Weekly day designation enabling analysis of sales patterns and operational performance across different weekdays
+  - name: Customer Id
+    column_id: CUSTOMERS::CUSTOMER_ID
+    properties:
+      column_type: ATTRIBUTE
   - name: day_of_week
     formula_id: formula_day_of_week
     properties:
@@ -174,27 +172,6 @@ model:
       column_type: ATTRIBUTE
       index_type: DONT_INDEX
       ai_context: Web link reference providing external connectivity to related resources or detailed product information
-  - name: new date
-    formula_id: formula_new date
-    properties:
-      column_type: ATTRIBUTE
-      index_type: DONT_INDEX
-      ai_context: Alternative date representation in text format supporting flexible temporal analysis and reporting requirements
-  - name: test dollar
-    formula_id: formula_test dollar
-    properties:
-      column_type: ATTRIBUTE
-      index_type: DONT_INDEX
-      ai_context: Text-based monetary test field containing dollar-formatted values for system validation and data quality verification
-  - name: Untitled
-    formula_id: formula_Untitled
-    properties:
-      column_type: ATTRIBUTE
-      index_type: DONT_INDEX
-  - name: Customer Id
-    column_id: CUSTOMERS::CUSTOMER_ID
-    properties:
-      column_type: ATTRIBUTE
   - name: Product
     description: abc
     column_id: D_PRODUCT::Product
@@ -318,7 +295,7 @@ model:
       index_type: DONT_INDEX
       synonyms:
       - Day
-      format_pattern: yyyy/mm/dd
+      format_pattern: yyyy/MM/DD
       synonym_type: AUTO_GENERATED
       ai_context: Transaction date in standard format enabling chronological analysis and time-series business performance tracking
   - name: Is Holiday
@@ -353,18 +330,25 @@ model:
     properties:
       column_type: ATTRIBUTE
       ai_context: Text-based vendor identifier providing alternative supplier coding system for vendor management processes
-  - name: hour
-    formula_id: formula_hour
+  - name: new date
+    formula_id: formula_new date
     properties:
       column_type: ATTRIBUTE
       index_type: DONT_INDEX
+      ai_context: Alternative date representation in text format supporting flexible temporal analysis and reporting requirements
+  - name: test dollar
+    formula_id: formula_test dollar
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      ai_context: Text-based monetary test field containing dollar-formatted values for system validation and data quality verification
   properties:
     is_bypass_rls: false
     join_progressive: true
     spotter_config:
       is_spotter_enabled: true
   parameters:
-  - id: 028dc081-a901-46ee-bebd-4ad5cbc92909
+  - id: ef1b2ece-5fcc-4cf4-8dad-90821931f626
     name: b
     data_type: INT64
     default_value: '1'

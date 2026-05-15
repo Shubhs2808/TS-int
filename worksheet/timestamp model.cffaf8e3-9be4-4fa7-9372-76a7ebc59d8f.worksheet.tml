@@ -1,0 +1,49 @@
+guid: cffaf8e3-9be4-4fa7-9372-76a7ebc59d8f
+model:
+  name: timestamp model
+  model_tables:
+  - name: RANDOM_TIMESTAMPS
+    fqn: f9095fda-11c7-45c8-880f-bed3f3c856ea
+  formulas:
+  - id: formula_Untitled
+    name: Untitled
+    expr: if ( [test] = today ( ) ) then true else false
+  - id: formula_date
+    name: date
+    expr: date ( [RANDOM_TIMESTAMPS::EVENT_TIMESTAMP] )
+  - id: formula_hour
+    name: hour
+    expr: hour_of_day ( [RANDOM_TIMESTAMPS::EVENT_TIMESTAMP] )
+  columns:
+  - name: Event Timestamp
+    column_id: RANDOM_TIMESTAMPS::EVENT_TIMESTAMP
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      format_pattern: yyyy-MM-dd HH:mm:ss
+  - name: hour
+    formula_id: formula_hour
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: date
+    formula_id: formula_date
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Untitled
+    formula_id: formula_Untitled
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  properties:
+    is_bypass_rls: false
+    join_progressive: true
+    spotter_config:
+      is_spotter_enabled: false
+  parameters:
+  - id: 5c9ac57d-9533-4d8e-b062-ec6eb2d5cc8f
+    name: test
+    data_type: DATE
+    default_value: 05/19/2026
+    description: ''

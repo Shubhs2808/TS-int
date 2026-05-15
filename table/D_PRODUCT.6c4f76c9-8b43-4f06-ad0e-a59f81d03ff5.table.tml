@@ -48,6 +48,18 @@ table:
       index_type: DONT_INDEX
     db_column_properties:
       data_type: DOUBLE
+  rls_rules:
+    tables:
+    - name: D_PRODUCT
+      fqn: 6c4f76c9-8b43-4f06-ad0e-a59f81d03ff5
+    table_paths:
+    - id: D_PRODUCT_1
+      table: D_PRODUCT
+      column:
+      - Product
+    rules:
+    - name: rule
+      expr: "[D_PRODUCT_1::Product] = ts_var ( abac3 )"
   properties:
     spotter_config:
       is_spotter_enabled: true

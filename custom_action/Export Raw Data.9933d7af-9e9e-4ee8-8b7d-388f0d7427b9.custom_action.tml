@@ -1,0 +1,8 @@
+guid: 9933d7af-9e9e-4ee8-8b7d-388f0d7427b9
+action_object:
+  name: Export Raw Data
+  type: CALLBACK
+  callback_action_details:
+    reference: export-raw-data
+  availability: GLOBAL
+  application: NONE

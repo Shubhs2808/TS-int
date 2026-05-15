@@ -1,0 +1,8 @@
+guid: 76061b68-50d5-4e0c-b5e9-795a8b015852
+action_object:
+  name: show details
+  type: CALLBACK
+  callback_action_details:
+    reference: show-details
+  availability: GLOBAL
+  application: NONE

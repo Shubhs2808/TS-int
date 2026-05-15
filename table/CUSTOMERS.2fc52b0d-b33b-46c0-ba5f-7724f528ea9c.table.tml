@@ -14,6 +14,18 @@ table:
       column_type: ATTRIBUTE
     db_column_properties:
       data_type: VARCHAR
+  rls_rules:
+    tables:
+    - name: CUSTOMERS
+      fqn: 2fc52b0d-b33b-46c0-ba5f-7724f528ea9c
+    table_paths:
+    - id: CUSTOMERS_1
+      table: CUSTOMERS
+      column:
+      - CUSTOMER_ID
+    rules:
+    - name: Untitled
+      expr: "[CUSTOMERS_1::CUSTOMER_ID] = ts_var ( abac4 )"
   properties:
     spotter_config:
       is_spotter_enabled: false

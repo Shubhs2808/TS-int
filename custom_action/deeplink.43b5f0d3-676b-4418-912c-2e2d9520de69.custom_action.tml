@@ -1,0 +1,8 @@
+guid: 43b5f0d3-676b-4418-912c-2e2d9520de69
+action_object:
+  name: deeplink
+  type: CALLBACK
+  callback_action_details:
+    reference: deeplink
+  availability: GLOBAL
+  application: NONE
