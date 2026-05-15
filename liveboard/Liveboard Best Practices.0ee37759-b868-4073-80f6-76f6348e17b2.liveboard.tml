@@ -621,7 +621,7 @@ liveboard:
   - id: Viz_11
     viz_guid: a0bf4519-4ba4-4b05-9b02-9f9903760a63
     note_tile:
-      html_parsed_string: "<h1 class=\"theme-module__editor-h1\" dir=\"ltr\"><span style=\"white-space: pre-wrap;\">🏃🏻‍♂️</span></h1><hr><h1 class=\"theme-module__editor-h1\"><a href=\"https://www.flaticon.com/free-icons/overview\" target=\"_blank\" rel=\"noreferrer\" class=\"theme-module__editor-link\"><span style=\"white-space: pre-wrap;\">Link</span></a><span style=\"white-space: pre-wrap;\"> </span></h1><p class=\"theme-module__editor-paragraph\"><br></p><div class=\"pinboard-note-tile-module__noteTileBg editor-module__bgNode\" style=\"background-color: rgb(255, 204, 179);\"></div>"
+      html_parsed_string: "<p class=\"theme-module__editor-paragraph\"><span style=\"white-space: pre-wrap;\">Test</span></p><hr><h1 class=\"theme-module__editor-h1\"><a href=\"https://www.flaticon.com/free-icons/overview\" target=\"_blank\" rel=\"noreferrer\" class=\"theme-module__editor-link\"><span style=\"white-space: pre-wrap;\">Link</span></a><span style=\"white-space: pre-wrap;\"> </span></h1><p class=\"theme-module__editor-paragraph\"><br></p><div class=\"pinboard-note-tile-module__noteTileBg editor-module__bgNode\" style=\"background-color: rgb(255, 204, 179);\"></div>"
   - id: Viz_12
     answer:
       name: clickable link
