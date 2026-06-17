@@ -995,6 +995,9 @@ liveboard:
     - (Sample) Retail - Apparel::region
     excluded_visualizations:
     - Viz_10
+    - Viz_13
+    - Viz_16
+    - Viz_17
     is_mandatory: false
     is_single_value: false
     display_name: ""

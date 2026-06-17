@@ -206,9 +206,9 @@ model:
   - name: Purchase Order Id
     column_id: A_PURCHASE_ORDERS_FACT::PURCHASE_ORDER_ID
     properties:
-      column_type: MEASURE
-      aggregation: SUM
+      column_type: ATTRIBUTE
       index_type: DONT_INDEX
+      is_additive: true
       ai_context: Unique procurement transaction identifier linking purchases to vendor orders and supply chain tracking
   - name: PRODUCT_TYPE
     description: types of product food or non food
@@ -235,9 +235,9 @@ model:
   - name: Product Id1
     column_id: PRODUCT_STATUS1::PRODUCT_ID
     properties:
-      column_type: MEASURE
-      aggregation: SUM
+      column_type: ATTRIBUTE
       index_type: DONT_INDEX
+      is_additive: true
   - name: Status
     column_id: PRODUCT_STATUS1::STATUS
     properties:

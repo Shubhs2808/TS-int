@@ -47,6 +47,9 @@ model:
   - name: CUSTOMERS
     fqn: 2fc52b0d-b33b-46c0-ba5f-7724f528ea9c
   formulas:
+  - id: formula_Dimension
+    name: Dimension
+    expr: 'if ( [Dimension Selector] = ''Product name'' ) then [D_PRODUCT::Product] else [D_PRODUCT::PRODUCT_TYPE] '
   - id: formula_Untitled
     name: Untitled
     expr: concat ( month ( [D_DATE::DATE]  ) , ' ' , year_name ( [D_DATE::DATE] ) )
@@ -191,6 +194,16 @@ model:
     properties:
       column_type: ATTRIBUTE
       index_type: DONT_INDEX
+  - name: hour
+    formula_id: formula_hour
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Dimension
+    formula_id: formula_Dimension
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
   - name: Customer Id
     column_id: CUSTOMERS::CUSTOMER_ID
     properties:
@@ -238,6 +251,7 @@ model:
     column_id: D_PRODUCT::PRODUCT_TYPE
     properties:
       column_type: ATTRIBUTE
+      is_hidden: true
       synonym_type: USER_DEFINED
       custom_order:
       - non-food
@@ -318,7 +332,7 @@ model:
       index_type: DONT_INDEX
       synonyms:
       - Day
-      format_pattern: yyyy/mm/dd
+      format_pattern: yyyy/MM/dd
       synonym_type: AUTO_GENERATED
       ai_context: Transaction date in standard format enabling chronological analysis and time-series business performance tracking
   - name: Is Holiday
@@ -353,17 +367,21 @@ model:
     properties:
       column_type: ATTRIBUTE
       ai_context: Text-based vendor identifier providing alternative supplier coding system for vendor management processes
-  - name: hour
-    formula_id: formula_hour
-    properties:
-      column_type: ATTRIBUTE
-      index_type: DONT_INDEX
   properties:
     is_bypass_rls: false
     join_progressive: true
     spotter_config:
       is_spotter_enabled: true
   parameters:
+  - id: 1e9fdc5f-4b8a-4357-b143-2356c11b2720
+    name: Dimension Selector
+    data_type: CHAR
+    default_value: Product name
+    list_config:
+      list_choice:
+      - value: Product name
+      - value: Product type
+    description: ''
   - id: 028dc081-a901-46ee-bebd-4ad5cbc92909
     name: b
     data_type: INT64

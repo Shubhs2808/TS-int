@@ -59,7 +59,7 @@ table:
       - Product
     rules:
     - name: rule
-      expr: "[D_PRODUCT_1::Product] = ts_var ( abac3 )"
+      expr: "[D_PRODUCT_1::Product] = ts_username"
   properties:
     spotter_config:
       is_spotter_enabled: true
