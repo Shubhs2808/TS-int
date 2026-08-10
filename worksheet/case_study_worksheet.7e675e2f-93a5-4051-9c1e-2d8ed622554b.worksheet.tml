@@ -246,7 +246,7 @@ model:
       aggregation: SUM
       index_type: DONT_INDEX
       ai_context: Unique procurement transaction identifier linking purchases to vendor orders and supply chain tracking
-  - name: PRODUCT_TYPE
+  - name: TYPE
     description: types of product food or non food
     column_id: D_PRODUCT::PRODUCT_TYPE
     properties:
