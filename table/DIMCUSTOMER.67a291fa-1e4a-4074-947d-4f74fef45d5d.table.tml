@@ -1,0 +1,88 @@
+guid: 67a291fa-1e4a-4074-947d-4f74fef45d5d
+table:
+  name: DIMCUSTOMER
+  db: SALES_DW
+  schema: STAR_SCHEMA
+  db_table: DIMCUSTOMER
+  connection:
+    name: Sales Case Study
+    fqn: 29697fbd-ca74-42f8-a5b3-deb99daa6deb
+  columns:
+  - name: CUSTOMERKEY
+    db_column_name: CUSTOMERKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: CUSTOMERID
+    db_column_name: CUSTOMERID
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: FIRSTNAME
+    db_column_name: FIRSTNAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: LASTNAME
+    db_column_name: LASTNAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: GENDER
+    db_column_name: GENDER
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: DATEOFBIRTH
+    db_column_name: DATEOFBIRTH
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: CITY
+    db_column_name: CITY
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: STATE
+    db_column_name: STATE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: COUNTRY
+    db_column_name: COUNTRY
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: CUSTOMERSEGMENT
+    db_column_name: CUSTOMERSEGMENT
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  rls_rules:
+    tables:
+    - name: DIMCUSTOMER
+      fqn: 67a291fa-1e4a-4074-947d-4f74fef45d5d
+    table_paths:
+    - id: DIMCUSTOMER_1
+      table: DIMCUSTOMER
+      column:
+      - CUSTOMERID
+    rules:
+    - name: Untitled
+      expr: "ts_groups = [DIMCUSTOMER_1::CUSTOMERID] "
+  properties:
+    spotter_config:
+      is_spotter_enabled: false

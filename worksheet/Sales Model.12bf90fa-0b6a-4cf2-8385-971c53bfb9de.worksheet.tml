@@ -1,0 +1,249 @@
+guid: 12bf90fa-0b6a-4cf2-8385-971c53bfb9de
+model:
+  name: Sales Model
+  model_tables:
+  - name: DIMCUSTOMER
+    fqn: 67a291fa-1e4a-4074-947d-4f74fef45d5d
+  - name: DIMDATE
+    fqn: 342f79bf-4d77-42f7-89f2-0d2ee9d62fb7
+  - name: DIMPRODUCT
+    fqn: c27d28bd-0b17-4362-a8ab-f5d96b740c94
+  - name: DIMSALESPERSON
+    fqn: 2c8998ba-25ce-4453-aa16-560e6f004873
+  - name: DIMSTORE
+    fqn: ce4b58d6-2d4c-439e-96d5-1e3885d11651
+  - name: FACTSALES
+    fqn: e2798659-c745-4910-9452-93980c72e379
+    joins:
+    - with: DIMCUSTOMER
+      'on': '[FACTSALES::CUSTOMERKEY] = [DIMCUSTOMER::CUSTOMERKEY]'
+      type: RIGHT_OUTER
+      cardinality: MANY_TO_ONE
+    - with: DIMDATE
+      'on': '[FACTSALES::DATEKEY] = [DIMDATE::DATEKEY]'
+      type: INNER
+      cardinality: MANY_TO_ONE
+    - with: DIMPRODUCT
+      'on': '[FACTSALES::PRODUCTKEY] = [DIMPRODUCT::PRODUCTKEY]'
+      type: RIGHT_OUTER
+      cardinality: MANY_TO_ONE
+    - with: DIMSALESPERSON
+      'on': '[FACTSALES::SALESPERSONKEY] = [DIMSALESPERSON::SALESPERSONKEY]'
+      type: RIGHT_OUTER
+      cardinality: MANY_TO_ONE
+    - with: DIMSTORE
+      'on': '[FACTSALES::STOREKEY] = [DIMSTORE::STOREKEY]'
+      type: RIGHT_OUTER
+      cardinality: MANY_TO_ONE
+  columns:
+  - name: City
+    column_id: DIMCUSTOMER::CITY
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+      synonyms:
+      - Customer city
+  - name: Country
+    column_id: DIMCUSTOMER::COUNTRY
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - Customer country
+  - name: Customerid
+    column_id: DIMCUSTOMER::CUSTOMERID
+    properties:
+      column_type: ATTRIBUTE
+  - name: Customerkey
+    column_id: DIMCUSTOMER::CUSTOMERKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Customersegment
+    column_id: DIMCUSTOMER::CUSTOMERSEGMENT
+    properties:
+      column_type: ATTRIBUTE
+  - name: Dateofbirth
+    column_id: DIMCUSTOMER::DATEOFBIRTH
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Customer Firstname
+    column_id: DIMCUSTOMER::FIRSTNAME
+    properties:
+      column_type: ATTRIBUTE
+  - name: Gender
+    column_id: DIMCUSTOMER::GENDER
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - Customer gender
+  - name: Customer Lastname
+    column_id: DIMCUSTOMER::LASTNAME
+    properties:
+      column_type: ATTRIBUTE
+  - name: State
+    column_id: DIMCUSTOMER::STATE
+    properties:
+      column_type: ATTRIBUTE
+      synonyms:
+      - Customer state
+  - name: Date
+    column_id: DIMDATE::FULLDATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Brand
+    column_id: DIMPRODUCT::BRAND
+    properties:
+      column_type: ATTRIBUTE
+  - name: Category
+    column_id: DIMPRODUCT::CATEGORY
+    properties:
+      column_type: ATTRIBUTE
+  - name: Listprice
+    column_id: DIMPRODUCT::LISTPRICE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Productid
+    column_id: DIMPRODUCT::PRODUCTID
+    properties:
+      column_type: ATTRIBUTE
+  - name: Productkey
+    column_id: DIMPRODUCT::PRODUCTKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Productname
+    column_id: DIMPRODUCT::PRODUCTNAME
+    properties:
+      column_type: ATTRIBUTE
+  - name: Standardcost
+    column_id: DIMPRODUCT::STANDARDCOST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Subcategory
+    column_id: DIMPRODUCT::SUBCATEGORY
+    properties:
+      column_type: ATTRIBUTE
+  - name: Employeeid
+    column_id: DIMSALESPERSON::EMPLOYEEID
+    properties:
+      column_type: ATTRIBUTE
+  - name: Firstname
+    column_id: DIMSALESPERSON::FIRSTNAME
+    properties:
+      column_type: ATTRIBUTE
+  - name: Hiredate
+    column_id: DIMSALESPERSON::HIREDATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Lastname
+    column_id: DIMSALESPERSON::LASTNAME
+    properties:
+      column_type: ATTRIBUTE
+  - name: Salespersonkey
+    column_id: DIMSALESPERSON::SALESPERSONKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Store City
+    column_id: DIMSTORE::CITY
+    properties:
+      column_type: ATTRIBUTE
+  - name: Store Country
+    column_id: DIMSTORE::COUNTRY
+    properties:
+      column_type: ATTRIBUTE
+  - name: Region
+    column_id: DIMSTORE::REGION
+    properties:
+      column_type: ATTRIBUTE
+  - name: Store State
+    column_id: DIMSTORE::STATE
+    properties:
+      column_type: ATTRIBUTE
+  - name: Storeid
+    column_id: DIMSTORE::STOREID
+    properties:
+      column_type: ATTRIBUTE
+  - name: Storekey
+    column_id: DIMSTORE::STOREKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Storename
+    column_id: DIMSTORE::STORENAME
+    properties:
+      column_type: ATTRIBUTE
+  - name: Costamount
+    column_id: FACTSALES::COSTAMOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Datekey
+    column_id: FACTSALES::DATEKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Discountamount
+    column_id: FACTSALES::DISCOUNTAMOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Ordernumber
+    column_id: FACTSALES::ORDERNUMBER
+    properties:
+      column_type: ATTRIBUTE
+  - name: Profitamount
+    column_id: FACTSALES::PROFITAMOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Quantity
+    column_id: FACTSALES::QUANTITY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Salesamount
+    column_id: FACTSALES::SALESAMOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Saleskey
+    column_id: FACTSALES::SALESKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Unitprice
+    column_id: FACTSALES::UNITPRICE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  properties:
+    is_bypass_rls: false
+    join_progressive: true
+    spotter_config:
+      is_spotter_enabled: true
+  parameters:
+  - id: fa937af7-4968-4fb2-ae12-ce0eb7869800
+    name: date_test
+    data_type: DATE
+    default_value: 05/12/2026
+    description: ''

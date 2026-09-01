@@ -1,0 +1,54 @@
+guid: 2c8998ba-25ce-4453-aa16-560e6f004873
+table:
+  name: DIMSALESPERSON
+  db: SALES_DW
+  schema: STAR_SCHEMA
+  db_table: DIMSALESPERSON
+  connection:
+    name: Sales Case Study
+    fqn: 29697fbd-ca74-42f8-a5b3-deb99daa6deb
+  columns:
+  - name: SALESPERSONKEY
+    db_column_name: SALESPERSONKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: EMPLOYEEID
+    db_column_name: EMPLOYEEID
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: FIRSTNAME
+    db_column_name: FIRSTNAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: LASTNAME
+    db_column_name: LASTNAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: HIREDATE
+    db_column_name: HIREDATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: STOREKEY
+    db_column_name: STOREKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  properties:
+    spotter_config:
+      is_spotter_enabled: false

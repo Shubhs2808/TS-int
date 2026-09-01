@@ -1,0 +1,2140 @@
+guid: ac258d06-6ce8-4c4f-b78e-b3cda7d9e4f0
+liveboard:
+  name: sales liveboard
+  visualizations:
+  - id: Viz_1
+    answer:
+      name: Monthly Distinct Order Count
+      description: Unique orders counted by month.
+      tables:
+      - id: Sales Model
+        name: Sales Model
+        fqn: 12bf90fa-0b6a-4cf2-8385-971c53bfb9de
+      search_query: "unique count [Ordernumber] [Date].monthly"
+      answer_columns:
+      - name: Month(Date)
+      - name: Unique Number of Ordernumber
+        format:
+          category: NUMBER
+          numberFormatConfig:
+            unit: NONE
+            decimals: 0.0
+            toSeparateThousands: true
+            removeTrailingZeroes: false
+          isCategoryEditable: true
+      table:
+        table_columns:
+        - column_id: Month(Date)
+          headline_aggregation: MIN-MAX
+        - column_id: Unique Number of Ordernumber
+          headline_aggregation: AVERAGE
+        ordered_column_ids:
+        - Month(Date)
+        - Unique Number of Ordernumber
+        client_state: ""
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Month(Date)
+        - column_id: Unique Number of Ordernumber
+        axis_configs:
+        - x:
+          - Month(Date)
+          "y":
+          - Unique Number of Ordernumber
+        client_state: ""
+        viz_style: "{\"overrides\": {\"column_properties\": [{\"column_id\": \"Unique Number of Ordernumber\",\"properties\": {\"color\": \"#6b95a8\"}}]}}"
+      display_mode: CHART_MODE
+    viz_guid: bda63dac-ab5b-4b0c-8278-93b07cf36747
+  - id: Viz_2
+    answer:
+      name: Monthly Sales and Profit Totals
+      description: Sales and profit by month filtered.
+      tables:
+      - id: Sales Model
+        name: Sales Model
+        fqn: 12bf90fa-0b6a-4cf2-8385-971c53bfb9de
+      search_query: "sum [Salesamount] sum [Profitamount] [Date].monthly"
+      answer_columns:
+      - name: Month(Date)
+      - name: Total Profitamount
+        format:
+          category: CURRENCY
+          currencyFormatConfig:
+            locale: USD
+            unit: AUTO
+            decimals: 1.0
+            toSeparateThousands: true
+            removeTrailingZeroes: true
+          isCategoryEditable: true
+      - name: Total Salesamount
+        format:
+          category: CURRENCY
+          currencyFormatConfig:
+            locale: USD
+            unit: AUTO
+            decimals: 1.0
+            toSeparateThousands: true
+            removeTrailingZeroes: true
+          isCategoryEditable: true
+      table:
+        table_columns:
+        - column_id: Month(Date)
+          headline_aggregation: MIN-MAX
+        - column_id: Total Profitamount
+          headline_aggregation: SUM
+        - column_id: Total Salesamount
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Month(Date)
+        - Total Salesamount
+        - Total Profitamount
+        client_state: ""
+      chart:
+        type: ADVANCED_LINE
+        chart_columns:
+        - column_id: Month(Date)
+        - column_id: Total Profitamount
+        - column_id: Total Salesamount
+        client_state: ""
+        custom_chart_config:
+        - key: basic
+          dimensions:
+          - key: x-axis
+            axes:
+            - type: FLAT
+              column: Month(Date)
+            mode: AXIS_DRIVEN
+          - key: y-axis
+            axes:
+            - type: DUAL
+              primary:
+                type: FLAT
+                column: Total Salesamount
+              secondary:
+                type: FLAT
+                column: Total Profitamount
+            mode: AXIS_DRIVEN
+          - key: slice-with-color
+            mode: AXIS_DRIVEN
+          - key: trellis-by
+            mode: AXIS_DRIVEN
+        viz_style: "{\"overrides\": {\"legend_properties\": {\"show_legend\": true,\"position\": \"BOTTOM_LEGEND\",\"color_palette\": {\"colors\": [\"#b8d4e8\",\"#8fbad6\",\"#3b6fa0\",\"#2d5a82\",\"#1f4563\",\"#b5d8dc\",\"#8cc4cb\",\"#4a7b8c\",\"#3a6270\",\"#2a4a55\",\"#c2dde5\",\"#96c5d1\",\"#5c8a9e\",\"#4a7080\",\"#385662\",\"#ccdfe4\",\"#a3c8d2\",\"#6b95a8\",\"#567888\",\"#415b68\",\"#d4e3ec\",\"#b0cfdc\",\"#7ba3b8\",\"#628494\",\"#4a6570\",\"#dce8ee\",\"#bddae4\",\"#8bb0c2\",\"#6e8f9e\",\"#52707a\",\"#e4edf2\",\"#c8e0ea\",\"#9bbdcc\",\"#7d9aa8\",\"#5f7a84\",\"#ecf2f5\",\"#d4e6ee\",\"#abcad6\",\"#8ca6b2\",\"#6d848e\"]}},\"data_label_properties\": {\"all_labels\": true},\"display_properties\": {\"gridline_properties\": {\"x_gridline_enabled\": false,\"y_gridline_enabled\": false}},\"axis_properties\": [{\"linked_columns\": [\"Total Salesamount\"],\"properties\": {\"is_name_visible\": false,\"is_label_visible\": true}},{\"linked_columns\": [\"Total Profitamount\"],\"properties\": {\"is_name_visible\": false,\"is_label_visible\": true}}]}}"
+      display_mode: CHART_MODE
+    viz_guid: 41ee1d85-b251-4b89-987b-44b64842113b
+  - id: Viz_3
+    answer:
+      name: Quarterly Sales by Category
+      description: Total salesamount across categories by quarter.
+      tables:
+      - id: Sales Model
+        name: Sales Model
+        fqn: 12bf90fa-0b6a-4cf2-8385-971c53bfb9de
+      search_query: "sum [Salesamount] [Date].quarterly [Category]"
+      answer_columns:
+      - name: Category
+      - name: Quarter(Date)
+      - name: Total Salesamount
+        format:
+          category: CURRENCY
+          currencyFormatConfig:
+            locale: USD
+            unit: AUTO
+            decimals: 1.0
+            toSeparateThousands: true
+            removeTrailingZeroes: true
+          isCategoryEditable: true
+      table:
+        table_columns:
+        - column_id: Category
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Quarter(Date)
+          headline_aggregation: MIN-MAX
+        - column_id: Total Salesamount
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Quarter(Date)
+        - Category
+        - Total Salesamount
+        client_state: ""
+      chart:
+        type: ADVANCED_STACKED_AREA
+        chart_columns:
+        - column_id: Category
+        - column_id: Quarter(Date)
+        - column_id: Total Salesamount
+        client_state: ""
+        custom_chart_config:
+        - key: basic
+          dimensions:
+          - key: x-axis
+            axes:
+            - type: FLAT
+              column: Quarter(Date)
+            mode: AXIS_DRIVEN
+          - key: y-axis
+            axes:
+            - type: FLAT
+              column: Total Salesamount
+            mode: AXIS_DRIVEN
+          - key: slice-with-color
+            axes:
+            - type: FLAT
+              column: Category
+            mode: AXIS_DRIVEN
+          - key: trellis-by
+            mode: AXIS_DRIVEN
+        viz_style: "{\"overrides\": {\"legend_properties\": {\"show_legend\": true,\"position\": \"BOTTOM_LEGEND\",\"color_palette\": {\"colors\": [\"#b8d4e8\",\"#8fbad6\",\"#3b6fa0\",\"#2d5a82\",\"#1f4563\",\"#b5d8dc\",\"#8cc4cb\",\"#4a7b8c\",\"#3a6270\",\"#2a4a55\",\"#c2dde5\",\"#96c5d1\",\"#5c8a9e\",\"#4a7080\",\"#385662\",\"#ccdfe4\",\"#a3c8d2\",\"#6b95a8\",\"#567888\",\"#415b68\",\"#d4e3ec\",\"#b0cfdc\",\"#7ba3b8\",\"#628494\",\"#4a6570\",\"#dce8ee\",\"#bddae4\",\"#8bb0c2\",\"#6e8f9e\",\"#52707a\",\"#e4edf2\",\"#c8e0ea\",\"#9bbdcc\",\"#7d9aa8\",\"#5f7a84\",\"#ecf2f5\",\"#d4e6ee\",\"#abcad6\",\"#8ca6b2\",\"#6d848e\"]}},\"data_label_properties\": {\"stack_labels_properties\": {\"is_visible\": true},\"column_data_label_properties\": [{\"column_id\": \"Total Salesamount\",\"properties\": {\"is_visible\": false}}]},\"display_properties\": {\"gridline_properties\": {\"x_gridline_enabled\": false,\"y_gridline_enabled\": false}},\"axis_properties\": [{\"linked_columns\": [\"Total Salesamount\"],\"properties\": {\"is_name_visible\": false,\"is_label_visible\": true}}]}}"
+      display_mode: CHART_MODE
+    viz_guid: 23120a7a-e659-4901-aee3-5dc00f908741
+  - id: Viz_4
+    answer:
+      name: Sales Metrics by Customer Segment
+      description: "Sales, profit, quantity by segment filtered."
+      tables:
+      - id: Sales Model
+        name: Sales Model
+        fqn: 12bf90fa-0b6a-4cf2-8385-971c53bfb9de
+      search_query: "sum [Salesamount] sum [Profitamount] sum [Quantity] [Customersegment]"
+      answer_columns:
+      - name: Customersegment
+      - name: Total Profitamount
+        format:
+          category: CURRENCY
+          currencyFormatConfig:
+            locale: USD
+            unit: AUTO
+            decimals: 1.0
+            toSeparateThousands: true
+            removeTrailingZeroes: true
+          isCategoryEditable: true
+      - name: Total Quantity
+        format:
+          category: NUMBER
+          numberFormatConfig:
+            unit: NONE
+            decimals: 0.0
+            toSeparateThousands: true
+            removeTrailingZeroes: false
+          isCategoryEditable: true
+      - name: Total Salesamount
+        format:
+          category: CURRENCY
+          currencyFormatConfig:
+            locale: USD
+            unit: AUTO
+            decimals: 1.0
+            toSeparateThousands: true
+            removeTrailingZeroes: true
+          isCategoryEditable: true
+      table:
+        table_columns:
+        - column_id: Customersegment
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Total Profitamount
+          headline_aggregation: SUM
+        - column_id: Total Quantity
+          headline_aggregation: SUM
+        - column_id: Total Salesamount
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Customersegment
+        - Total Salesamount
+        - Total Profitamount
+        - Total Quantity
+        client_state: ""
+      chart:
+        type: ADVANCED_COLUMN
+        chart_columns:
+        - column_id: Customersegment
+        - column_id: Total Profitamount
+        - column_id: Total Quantity
+        - column_id: Total Salesamount
+        client_state: ""
+        custom_chart_config:
+        - key: basic
+          dimensions:
+          - key: x-axis
+            axes:
+            - type: FLAT
+              column: Customersegment
+            mode: AXIS_DRIVEN
+          - key: y-axis
+            axes:
+            - type: FLAT
+              column: Total Salesamount
+            - type: FLAT
+              column: Total Profitamount
+            - type: FLAT
+              column: Total Quantity
+            mode: AXIS_DRIVEN
+          - key: slice-with-color
+            mode: AXIS_DRIVEN
+          - key: trellis-by
+            mode: AXIS_DRIVEN
+        viz_style: "{\"overrides\": {\"legend_properties\": {\"show_legend\": true,\"position\": \"BOTTOM_LEGEND\",\"color_palette\": {\"colors\": [\"#b8d4e8\",\"#8fbad6\",\"#3b6fa0\",\"#2d5a82\",\"#1f4563\",\"#b5d8dc\",\"#8cc4cb\",\"#4a7b8c\",\"#3a6270\",\"#2a4a55\",\"#c2dde5\",\"#96c5d1\",\"#5c8a9e\",\"#4a7080\",\"#385662\",\"#ccdfe4\",\"#a3c8d2\",\"#6b95a8\",\"#567888\",\"#415b68\",\"#d4e3ec\",\"#b0cfdc\",\"#7ba3b8\",\"#628494\",\"#4a6570\",\"#dce8ee\",\"#bddae4\",\"#8bb0c2\",\"#6e8f9e\",\"#52707a\",\"#e4edf2\",\"#c8e0ea\",\"#9bbdcc\",\"#7d9aa8\",\"#5f7a84\",\"#ecf2f5\",\"#d4e6ee\",\"#abcad6\",\"#8ca6b2\",\"#6d848e\"]}},\"data_label_properties\": {\"all_labels\": true},\"display_properties\": {\"gridline_properties\": {\"x_gridline_enabled\": false,\"y_gridline_enabled\": false}},\"axis_properties\": [{\"linked_columns\": [\"Total Salesamount\"],\"properties\": {\"is_name_visible\": false,\"is_label_visible\": true}}]}}"
+      display_mode: CHART_MODE
+    viz_guid: b357a643-e01a-41eb-a9f8-584a68d75a93
+  - id: Viz_5
+    answer:
+      name: Sales vs Profit by Category
+      description: Compares total sales and profit amounts.
+      tables:
+      - id: Sales Model
+        name: Sales Model
+        fqn: 12bf90fa-0b6a-4cf2-8385-971c53bfb9de
+      search_query: "[Salesamount] [Profitamount] [Category]"
+      answer_columns:
+      - name: Category
+      - name: Total Profitamount
+        format:
+          category: CURRENCY
+          currencyFormatConfig:
+            locale: USD
+            unit: AUTO
+            decimals: 1.0
+            toSeparateThousands: true
+            removeTrailingZeroes: true
+          isCategoryEditable: true
+      - name: Total Salesamount
+        format:
+          category: CURRENCY
+          currencyFormatConfig:
+            locale: USD
+            unit: AUTO
+            decimals: 1.0
+            toSeparateThousands: true
+            removeTrailingZeroes: true
+          isCategoryEditable: true
+      table:
+        table_columns:
+        - column_id: Category
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Total Profitamount
+          headline_aggregation: SUM
+        - column_id: Total Salesamount
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Category
+        - Total Salesamount
+        - Total Profitamount
+        client_state: ""
+      chart:
+        type: ADVANCED_SCATTER
+        chart_columns:
+        - column_id: Category
+        - column_id: Total Profitamount
+        - column_id: Total Salesamount
+        client_state: ""
+        custom_chart_config:
+        - key: basic
+          dimensions:
+          - key: x-axis
+            axes:
+            - type: FLAT
+              column: Category
+            mode: AXIS_DRIVEN
+          - key: y-axis
+            axes:
+            - type: MERGED
+              columns:
+              - Total Salesamount
+              - Total Profitamount
+            mode: AXIS_DRIVEN
+          - key: slice-with-color
+            mode: AXIS_DRIVEN
+          - key: trellis-by
+            mode: AXIS_DRIVEN
+        viz_style: "{\"overrides\": {\"legend_properties\": {\"show_legend\": false},\"data_label_properties\": {\"all_labels\": true},\"display_properties\": {\"gridline_properties\": {\"x_gridline_enabled\": false,\"y_gridline_enabled\": false}},\"column_properties\": [{\"column_id\": \"Total Salesamount\",\"properties\": {\"color\": \"#3b6fa0\"}}]}}"
+      display_mode: CHART_MODE
+    viz_guid: aee5e3d5-7aea-4010-b947-56703e03d31b
+  - id: Viz_6
+    answer:
+      name: Sales by Subcategory Ranking
+      description: Top subcategories ranked by total sales.
+      tables:
+      - id: Sales Model
+        name: Sales Model
+        fqn: 12bf90fa-0b6a-4cf2-8385-971c53bfb9de
+      formulas:
+      - id: formula_Salesamount Rank
+        name: Salesamount Rank
+        expr: "rank ( sum ( [Salesamount] ) , 'desc' )"
+        was_auto_generated: false
+      search_query: "[Salesamount] [formula_Salesamount Rank] [Subcategory]"
+      answer_columns:
+      - name: Salesamount Rank
+      - name: Subcategory
+      - name: Total Salesamount
+      table:
+        table_columns:
+        - column_id: Salesamount Rank
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Subcategory
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Total Salesamount
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Subcategory
+        - Salesamount Rank
+        - Total Salesamount
+        client_state: ""
+      chart:
+        type: PARETO
+        chart_columns:
+        - column_id: Salesamount Rank
+        - column_id: Subcategory
+        - column_id: Total Salesamount
+        axis_configs:
+        - x:
+          - Subcategory
+          "y":
+          - Total Salesamount
+        client_state: ""
+        viz_style: "{\"overrides\": {\"column_properties\": [{\"column_id\": \"Total Salesamount\",\"properties\": {\"color\": \"#3b6fa0\"}}]}}"
+      display_mode: CHART_MODE
+    viz_guid: bcb3b23f-3e5c-4672-8f5d-746bc9d46987
+  - id: Viz_7
+    answer:
+      name: Top 10 Salespersons by Revenue
+      description: Highest sales performers ranked by amount.
+      tables:
+      - id: Sales Model
+        name: Sales Model
+        fqn: 12bf90fa-0b6a-4cf2-8385-971c53bfb9de
+      formulas:
+      - id: formula_Salesamount Rank
+        name: Salesamount Rank
+        expr: "rank ( sum ( [Salesamount] ) , 'desc' )"
+        was_auto_generated: false
+      search_query: "top 10 [Lastname] [Firstname] [formula_Salesamount Rank] sort by [Salesamount]"
+      answer_columns:
+      - name: Firstname
+      - name: Lastname
+      - name: Salesamount Rank
+      - name: Total Salesamount
+        format:
+          category: CURRENCY
+          currencyFormatConfig:
+            locale: USD
+            unit: AUTO
+            decimals: 1.0
+            toSeparateThousands: true
+            removeTrailingZeroes: true
+          isCategoryEditable: true
+      table:
+        table_columns:
+        - column_id: Firstname
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Lastname
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Salesamount Rank
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Total Salesamount
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Lastname
+        - Firstname
+        - Salesamount Rank
+        - Total Salesamount
+        client_state: ""
+      chart:
+        type: ADVANCED_BAR
+        chart_columns:
+        - column_id: Firstname
+        - column_id: Lastname
+        - column_id: Salesamount Rank
+        - column_id: Total Salesamount
+        client_state: ""
+        custom_chart_config:
+        - key: basic
+          dimensions:
+          - key: x-axis
+            axes:
+            - type: FLAT
+              column: Total Salesamount
+            mode: AXIS_DRIVEN
+          - key: y-axis
+            axes:
+            - type: FLAT
+              column: Lastname
+            mode: AXIS_DRIVEN
+          - key: slice-with-color
+            axes:
+            - type: FLAT
+              column: Firstname
+            mode: AXIS_DRIVEN
+          - key: trellis-by
+            mode: AXIS_DRIVEN
+        viz_style: "{\"overrides\": {\"legend_properties\": {\"show_legend\": false},\"data_label_properties\": {\"all_labels\": true},\"display_properties\": {\"gridline_properties\": {\"x_gridline_enabled\": false,\"y_gridline_enabled\": false}},\"axis_properties\": [{\"linked_columns\": [\"Total Salesamount\"],\"properties\": {\"is_name_visible\": false,\"is_label_visible\": true}}],\"column_properties\": [{\"column_id\": \"Total Salesamount\",\"properties\": {\"color\": \"#4a7b8c\"}}]}}"
+      display_mode: CHART_MODE
+    viz_guid: c5bb86fc-aaa1-4e77-a7d4-5e91bf8e8334
+  - id: Viz_8
+    answer:
+      name: Sales by Person and Region
+      description: Total sales amount filtered by date.
+      tables:
+      - id: Sales Model
+        name: Sales Model
+        fqn: 12bf90fa-0b6a-4cf2-8385-971c53bfb9de
+      search_query: "[Salesamount] [Region] [Firstname]"
+      answer_columns:
+      - name: Firstname
+      - name: Region
+      - name: Total Salesamount
+        format:
+          category: CURRENCY
+          currencyFormatConfig:
+            locale: USD
+            unit: AUTO
+            decimals: 1.0
+            toSeparateThousands: true
+            removeTrailingZeroes: true
+          isCategoryEditable: true
+      table:
+        table_columns:
+        - column_id: Firstname
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Region
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Total Salesamount
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Region
+        - Firstname
+        - Total Salesamount
+        client_state: ""
+      chart:
+        type: HEATMAP
+        chart_columns:
+        - column_id: Firstname
+        - column_id: Region
+        - column_id: Total Salesamount
+        axis_configs:
+        - x:
+          - Region
+          "y":
+          - Firstname
+          size: Total Salesamount
+        client_state: ""
+        viz_style: "{\"overrides\": {\"data_label_properties\": {\"column_data_label_properties\": [{\"column_id\": \"Total Salesamount\",\"properties\": {\"is_visible\": false}}]},\"display_properties\": {\"gridline_properties\": {\"x_gridline_enabled\": false,\"y_gridline_enabled\": false}},\"column_properties\": [{\"column_id\": \"Total Salesamount\",\"properties\": {\"conditional_formatting\": {\"rows\": [{\"backgroundFormatType\": \"GRADIENT\",\"gradientBackgroundAttrs\": {\"colors\": [\"#E4EDF2\",\"#8FBAD6\",\"#2D5A82\"],\"backgroundFormatRange\": [0.0,0.5,1.0],\"isAutoScaled\": true},\"comparisonType\": \"VALUE_BASED\",\"lhsColumnId\": \"Total Salesamount\"}]}}}]}}"
+      display_mode: CHART_MODE
+    viz_guid: e94fbe69-d65a-40ca-baf6-00821982bda6
+  - id: Viz_9
+    answer:
+      name: Monthly Sales Amount Trend
+      description: Total sales by month for date_test.
+      tables:
+      - id: Sales Model
+        name: Sales Model
+        fqn: 12bf90fa-0b6a-4cf2-8385-971c53bfb9de
+      search_query: "sum [Salesamount] [Date].monthly"
+      answer_columns:
+      - name: Month(Date)
+      - name: Total Salesamount
+        format:
+          category: CURRENCY
+          currencyFormatConfig:
+            locale: USD
+            unit: AUTO
+            decimals: 1.0
+            toSeparateThousands: true
+            removeTrailingZeroes: true
+          isCategoryEditable: true
+      table:
+        table_columns:
+        - column_id: Month(Date)
+          headline_aggregation: MIN-MAX
+        - column_id: Total Salesamount
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Month(Date)
+        - Total Salesamount
+        client_state: ""
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Month(Date)
+        - column_id: Total Salesamount
+        axis_configs:
+        - x:
+          - Month(Date)
+          "y":
+          - Total Salesamount
+        client_state: ""
+        viz_style: "{\"overrides\": {\"column_properties\": [{\"column_id\": \"Total Salesamount\",\"properties\": {\"color\": \"#3b6fa0\"}}]}}"
+      display_mode: CHART_MODE
+    viz_guid: cba04558-8234-4dc1-97eb-1a3d0edade39
+  - id: Viz_10
+    answer:
+      name: Monthly Profit Amount Trend
+      description: Total profit by month for date_test.
+      tables:
+      - id: Sales Model
+        name: Sales Model
+        fqn: 12bf90fa-0b6a-4cf2-8385-971c53bfb9de
+      search_query: "sum [Profitamount] [Date].monthly"
+      answer_columns:
+      - name: Month(Date)
+      - name: Total Profitamount
+        format:
+          category: CURRENCY
+          currencyFormatConfig:
+            locale: USD
+            unit: AUTO
+            decimals: 1.0
+            toSeparateThousands: true
+            removeTrailingZeroes: true
+          isCategoryEditable: true
+      table:
+        table_columns:
+        - column_id: Month(Date)
+          headline_aggregation: MIN-MAX
+        - column_id: Total Profitamount
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Month(Date)
+        - Total Profitamount
+        client_state: ""
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Month(Date)
+        - column_id: Total Profitamount
+        axis_configs:
+        - x:
+          - Month(Date)
+          "y":
+          - Total Profitamount
+        client_state: ""
+        viz_style: "{\"overrides\": {\"column_properties\": [{\"column_id\": \"Total Profitamount\",\"properties\": {\"color\": \"#4a7b8c\"}}]}}"
+      display_mode: CHART_MODE
+    viz_guid: ad57ada9-047e-46c6-a43c-2eef55a9e1fb
+  - id: Viz_11
+    answer:
+      name: Monthly Quantity Sold Trend
+      description: Total quantity sold by month filtered.
+      tables:
+      - id: Sales Model
+        name: Sales Model
+        fqn: 12bf90fa-0b6a-4cf2-8385-971c53bfb9de
+      search_query: "sum [Quantity] [Date].monthly"
+      answer_columns:
+      - name: Month(Date)
+      - name: Total Quantity
+        format:
+          category: NUMBER
+          numberFormatConfig:
+            unit: NONE
+            decimals: 0.0
+            toSeparateThousands: true
+            removeTrailingZeroes: false
+          isCategoryEditable: true
+      table:
+        table_columns:
+        - column_id: Month(Date)
+          headline_aggregation: MIN-MAX
+        - column_id: Total Quantity
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Month(Date)
+        - Total Quantity
+        client_state: ""
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Month(Date)
+        - column_id: Total Quantity
+        axis_configs:
+        - x:
+          - Month(Date)
+          "y":
+          - Total Quantity
+        client_state: ""
+        viz_style: "{\"overrides\": {\"column_properties\": [{\"column_id\": \"Total Quantity\",\"properties\": {\"color\": \"#5c8a9e\"}}]}}"
+      display_mode: CHART_MODE
+    viz_guid: df56c556-4723-46b2-99fe-aac9e67b3c9b
+  - id: Viz_12
+    answer:
+      name: Sales and Profit by Region
+      description: Regional sales and profit comparison.
+      tables:
+      - id: Sales Model
+        name: Sales Model
+        fqn: 12bf90fa-0b6a-4cf2-8385-971c53bfb9de
+      search_query: "sum [Salesamount] sum [Profitamount] [Region]"
+      answer_columns:
+      - name: Region
+      - name: Total Profitamount
+        format:
+          category: CURRENCY
+          currencyFormatConfig:
+            locale: USD
+            unit: AUTO
+            decimals: 1.0
+            toSeparateThousands: true
+            removeTrailingZeroes: true
+          isCategoryEditable: true
+      - name: Total Salesamount
+        format:
+          category: CURRENCY
+          currencyFormatConfig:
+            locale: USD
+            unit: AUTO
+            decimals: 1.0
+            toSeparateThousands: true
+            removeTrailingZeroes: true
+          isCategoryEditable: true
+      table:
+        table_columns:
+        - column_id: Region
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Total Profitamount
+          headline_aggregation: SUM
+        - column_id: Total Salesamount
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Region
+        - Total Salesamount
+        - Total Profitamount
+        client_state: ""
+      chart:
+        type: ADVANCED_BAR
+        chart_columns:
+        - column_id: Region
+        - column_id: Total Profitamount
+        - column_id: Total Salesamount
+        client_state: ""
+        custom_chart_config:
+        - key: basic
+          dimensions:
+          - key: y-axis
+            axes:
+            - type: FLAT
+              column: Region
+            mode: AXIS_DRIVEN
+          - key: x-axis
+            axes:
+            - type: MERGED
+              columns:
+              - Total Salesamount
+              - Total Profitamount
+            mode: AXIS_DRIVEN
+          - key: slice-with-color
+            mode: AXIS_DRIVEN
+          - key: trellis-by
+            mode: AXIS_DRIVEN
+        viz_style: "{\"overrides\": {\"legend_properties\": {\"show_legend\": true,\"position\": \"BOTTOM_LEGEND\",\"color_palette\": {\"colors\": [\"#b8d4e8\",\"#8fbad6\",\"#3b6fa0\",\"#2d5a82\",\"#1f4563\",\"#b5d8dc\",\"#8cc4cb\",\"#4a7b8c\",\"#3a6270\",\"#2a4a55\",\"#c2dde5\",\"#96c5d1\",\"#5c8a9e\",\"#4a7080\",\"#385662\",\"#ccdfe4\",\"#a3c8d2\",\"#6b95a8\",\"#567888\",\"#415b68\",\"#d4e3ec\",\"#b0cfdc\",\"#7ba3b8\",\"#628494\",\"#4a6570\",\"#dce8ee\",\"#bddae4\",\"#8bb0c2\",\"#6e8f9e\",\"#52707a\",\"#e4edf2\",\"#c8e0ea\",\"#9bbdcc\",\"#7d9aa8\",\"#5f7a84\",\"#ecf2f5\",\"#d4e6ee\",\"#abcad6\",\"#8ca6b2\",\"#6d848e\"]}},\"data_label_properties\": {\"all_labels\": true},\"display_properties\": {\"gridline_properties\": {\"x_gridline_enabled\": false,\"y_gridline_enabled\": false}},\"axis_properties\": [{\"linked_columns\": [\"Total Salesamount\"],\"properties\": {\"is_name_visible\": false,\"is_label_visible\": true}}]}}"
+      display_mode: CHART_MODE
+    viz_guid: e8fb9e24-b225-4b9f-a8ff-53f84ea46634
+  - id: Viz_13
+    answer:
+      name: Sales by Region and Category
+      description: Total salesamount filtered by date_test.
+      tables:
+      - id: Sales Model
+        name: Sales Model
+        fqn: 12bf90fa-0b6a-4cf2-8385-971c53bfb9de
+      search_query: "sum [Salesamount] [Category] [Region]"
+      answer_columns:
+      - name: Category
+      - name: Region
+      - name: Total Salesamount
+        format:
+          category: CURRENCY
+          currencyFormatConfig:
+            locale: USD
+            unit: AUTO
+            decimals: 1.0
+            toSeparateThousands: true
+            removeTrailingZeroes: true
+          isCategoryEditable: true
+      table:
+        table_columns:
+        - column_id: Category
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Region
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Total Salesamount
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Category
+        - Region
+        - Total Salesamount
+        client_state: ""
+      chart:
+        type: HEATMAP
+        chart_columns:
+        - column_id: Category
+        - column_id: Region
+        - column_id: Total Salesamount
+        axis_configs:
+        - x:
+          - Category
+          "y":
+          - Region
+          size: Total Salesamount
+        client_state: ""
+        viz_style: "{\"overrides\": {\"data_label_properties\": {\"column_data_label_properties\": [{\"column_id\": \"Total Salesamount\",\"properties\": {\"is_visible\": false}}]},\"display_properties\": {\"gridline_properties\": {\"x_gridline_enabled\": false,\"y_gridline_enabled\": false}},\"column_properties\": [{\"column_id\": \"Total Salesamount\",\"properties\": {\"conditional_formatting\": {\"rows\": [{\"backgroundFormatType\": \"GRADIENT\",\"gradientBackgroundAttrs\": {\"colors\": [\"#E4EDF2\",\"#8FBAD6\",\"#2D5A82\"],\"backgroundFormatRange\": [0.0,0.5,1.0],\"isAutoScaled\": true},\"comparisonType\": \"VALUE_BASED\",\"lhsColumnId\": \"Total Salesamount\"}]}}}]}}"
+      display_mode: CHART_MODE
+    viz_guid: 142c5dda-ec28-4a9d-8581-1d708d595fcd
+  - id: Viz_14
+    answer:
+      name: Top 10 Categories by Sales
+      description: Highest sales categories on test date.
+      tables:
+      - id: Sales Model
+        name: Sales Model
+        fqn: 12bf90fa-0b6a-4cf2-8385-971c53bfb9de
+      formulas:
+      - id: formula_Salesamount rank
+        name: Salesamount rank
+        expr: "rank ( sum ( [Salesamount] ) , 'desc' )"
+        was_auto_generated: false
+      search_query: "top 10 [Category] [formula_Salesamount rank] sort by [Salesamount]"
+      answer_columns:
+      - name: Category
+      - name: Salesamount rank
+      - name: Total Salesamount
+        format:
+          category: CURRENCY
+          currencyFormatConfig:
+            locale: USD
+            unit: AUTO
+            decimals: 1.0
+            toSeparateThousands: true
+            removeTrailingZeroes: true
+          isCategoryEditable: true
+      table:
+        table_columns:
+        - column_id: Category
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Salesamount rank
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Total Salesamount
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Category
+        - Salesamount rank
+        - Total Salesamount
+        client_state: ""
+      chart:
+        type: ADVANCED_COLUMN
+        chart_columns:
+        - column_id: Category
+        - column_id: Salesamount rank
+        - column_id: Total Salesamount
+        client_state: ""
+        custom_chart_config:
+        - key: basic
+          dimensions:
+          - key: y-axis
+            axes:
+            - type: FLAT
+              column: Total Salesamount
+            mode: AXIS_DRIVEN
+          - key: x-axis
+            axes:
+            - type: FLAT
+              column: Category
+            mode: AXIS_DRIVEN
+          - key: slice-with-color
+            mode: AXIS_DRIVEN
+          - key: trellis-by
+            mode: AXIS_DRIVEN
+        viz_style: "{\"overrides\": {\"legend_properties\": {\"show_legend\": false},\"data_label_properties\": {\"all_labels\": true},\"display_properties\": {\"gridline_properties\": {\"x_gridline_enabled\": false,\"y_gridline_enabled\": false}},\"axis_properties\": [{\"linked_columns\": [\"Total Salesamount\"],\"properties\": {\"is_name_visible\": false,\"is_label_visible\": true}}],\"column_properties\": [{\"column_id\": \"Total Salesamount\",\"properties\": {\"color\": \"#3b6fa0\"}}]}}"
+      display_mode: CHART_MODE
+    viz_guid: a0f05f2f-b6e3-4086-ac04-073ba5fa6269
+  - id: Viz_15
+    answer:
+      name: Sales by Category Subcategory
+      description: Total sales filtered by test date.
+      tables:
+      - id: Sales Model
+        name: Sales Model
+        fqn: 12bf90fa-0b6a-4cf2-8385-971c53bfb9de
+      search_query: "sum [Salesamount] [Date] [Date].monthly [Subcategory] [Category]"
+      answer_columns:
+      - name: Category
+      - name: Month(Date)
+      - name: Subcategory
+      - name: Total Salesamount
+        format:
+          category: CURRENCY
+          currencyFormatConfig:
+            locale: USD
+            unit: AUTO
+            decimals: 1.0
+            toSeparateThousands: true
+            removeTrailingZeroes: true
+          isCategoryEditable: true
+      table:
+        table_columns:
+        - column_id: Category
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Month(Date)
+          headline_aggregation: MIN-MAX
+        - column_id: Subcategory
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Total Salesamount
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Month(Date)
+        - Subcategory
+        - Category
+        - Total Salesamount
+        client_state: ""
+      chart:
+        type: ADVANCED_PIVOT_TABLE
+        chart_columns:
+        - column_id: Category
+        - column_id: Month(Date)
+        - column_id: Subcategory
+        - column_id: Total Salesamount
+        client_state: ""
+        viz_style: "{\"overrides\": {}}"
+      display_mode: CHART_MODE
+    viz_guid: 3f2e897e-4740-479d-a86b-048398bb0ed1
+  - id: Viz_16
+    answer:
+      name: Top 15 Brands by Sales
+      description: Brands ranked by total sales amount.
+      tables:
+      - id: Sales Model
+        name: Sales Model
+        fqn: 12bf90fa-0b6a-4cf2-8385-971c53bfb9de
+      formulas:
+      - id: formula_Brand rank
+        name: Brand rank
+        expr: "rank ( sum ( [Salesamount] ) , 'desc' )"
+        was_auto_generated: false
+      search_query: "top 15 [Brand] [formula_Brand rank] sort by sum [Salesamount]"
+      answer_columns:
+      - name: Brand
+      - name: Brand rank
+      - name: Total Salesamount
+        format:
+          category: CURRENCY
+          currencyFormatConfig:
+            locale: USD
+            unit: AUTO
+            decimals: 1.0
+            toSeparateThousands: true
+            removeTrailingZeroes: true
+          isCategoryEditable: true
+      table:
+        table_columns:
+        - column_id: Brand
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Brand rank
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Total Salesamount
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Brand
+        - Brand rank
+        - Total Salesamount
+        client_state: ""
+      chart:
+        type: ADVANCED_BAR
+        chart_columns:
+        - column_id: Brand
+        - column_id: Brand rank
+        - column_id: Total Salesamount
+        client_state: ""
+        custom_chart_config:
+        - key: basic
+          dimensions:
+          - key: x-axis
+            axes:
+            - type: FLAT
+              column: Total Salesamount
+            mode: AXIS_DRIVEN
+          - key: y-axis
+            axes:
+            - type: FLAT
+              column: Brand
+            mode: AXIS_DRIVEN
+          - key: slice-with-color
+            mode: AXIS_DRIVEN
+          - key: trellis-by
+            mode: AXIS_DRIVEN
+        viz_style: "{\"overrides\": {\"legend_properties\": {\"show_legend\": false},\"data_label_properties\": {\"all_labels\": true},\"display_properties\": {\"gridline_properties\": {\"x_gridline_enabled\": false,\"y_gridline_enabled\": false}},\"axis_properties\": [{\"linked_columns\": [\"Total Salesamount\"],\"properties\": {\"is_name_visible\": false,\"is_label_visible\": true}}],\"column_properties\": [{\"column_id\": \"Total Salesamount\",\"properties\": {\"color\": \"#5c8a9e\"}}]}}"
+      display_mode: CHART_MODE
+    viz_guid: 6b8b3d68-841b-41e7-9afd-bbb0dccbe2cd
+  - id: Viz_17
+    answer:
+      name: Sales by Customer Segment
+      description: Total sales amount per customer segment.
+      tables:
+      - id: Sales Model
+        name: Sales Model
+        fqn: 12bf90fa-0b6a-4cf2-8385-971c53bfb9de
+      search_query: "sum [Salesamount] [Customersegment]"
+      answer_columns:
+      - name: Customersegment
+      - name: Total Salesamount
+        format:
+          category: CURRENCY
+          currencyFormatConfig:
+            locale: USD
+            unit: AUTO
+            decimals: 1.0
+            toSeparateThousands: true
+            removeTrailingZeroes: true
+          isCategoryEditable: true
+      table:
+        table_columns:
+        - column_id: Customersegment
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Total Salesamount
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Customersegment
+        - Total Salesamount
+        client_state: ""
+      chart:
+        type: ADVANCED_DONUT
+        chart_columns:
+        - column_id: Customersegment
+        - column_id: Total Salesamount
+        client_state: ""
+        custom_chart_config:
+        - key: basic
+          dimensions:
+          - key: x-axis
+            axes:
+            - type: FLAT
+              column: Customersegment
+            mode: AXIS_DRIVEN
+          - key: y-axis
+            axes:
+            - type: FLAT
+              column: Total Salesamount
+            mode: AXIS_DRIVEN
+        viz_style: "{\"overrides\": {\"legend_properties\": {\"show_legend\": true,\"position\": \"BOTTOM_LEGEND\",\"color_palette\": {\"colors\": [\"#b8d4e8\",\"#8fbad6\",\"#3b6fa0\",\"#2d5a82\",\"#1f4563\",\"#b5d8dc\",\"#8cc4cb\",\"#4a7b8c\",\"#3a6270\",\"#2a4a55\",\"#c2dde5\",\"#96c5d1\",\"#5c8a9e\",\"#4a7080\",\"#385662\",\"#ccdfe4\",\"#a3c8d2\",\"#6b95a8\",\"#567888\",\"#415b68\",\"#d4e3ec\",\"#b0cfdc\",\"#7ba3b8\",\"#628494\",\"#4a6570\",\"#dce8ee\",\"#bddae4\",\"#8bb0c2\",\"#6e8f9e\",\"#52707a\",\"#e4edf2\",\"#c8e0ea\",\"#9bbdcc\",\"#7d9aa8\",\"#5f7a84\",\"#ecf2f5\",\"#d4e6ee\",\"#abcad6\",\"#8ca6b2\",\"#6d848e\"]}}}}"
+      display_mode: CHART_MODE
+    viz_guid: aba3c4ec-b4d3-44b7-96c8-620a916742a3
+  - id: Viz_18
+    answer:
+      name: Monthly Sales vs Discount Analysis
+      description: Total sales and discounts by month.
+      tables:
+      - id: Sales Model
+        name: Sales Model
+        fqn: 12bf90fa-0b6a-4cf2-8385-971c53bfb9de
+      search_query: "sum [Salesamount] sum [Discountamount] [Date].monthly"
+      answer_columns:
+      - name: Month(Date)
+      - name: Total Discountamount
+        format:
+          category: CURRENCY
+          currencyFormatConfig:
+            locale: USD
+            unit: AUTO
+            decimals: 1.0
+            toSeparateThousands: true
+            removeTrailingZeroes: true
+          isCategoryEditable: true
+      - name: Total Salesamount
+        format:
+          category: CURRENCY
+          currencyFormatConfig:
+            locale: USD
+            unit: AUTO
+            decimals: 1.0
+            toSeparateThousands: true
+            removeTrailingZeroes: true
+          isCategoryEditable: true
+      table:
+        table_columns:
+        - column_id: Month(Date)
+          headline_aggregation: MIN-MAX
+        - column_id: Total Discountamount
+          headline_aggregation: SUM
+        - column_id: Total Salesamount
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Month(Date)
+        - Total Salesamount
+        - Total Discountamount
+        client_state: ""
+      chart:
+        type: ADVANCED_LINE_COLUMN
+        chart_columns:
+        - column_id: Month(Date)
+        - column_id: Total Discountamount
+        - column_id: Total Salesamount
+        client_state: ""
+        custom_chart_config:
+        - key: basic
+          dimensions:
+          - key: x-axis
+            axes:
+            - type: FLAT
+              column: Month(Date)
+            mode: AXIS_DRIVEN
+          - key: y-axis-column
+            axes:
+            - type: MERGED
+              columns:
+              - Total Salesamount
+            mode: AXIS_DRIVEN
+          - key: y-axis-line
+            axes:
+            - type: MERGED
+              columns:
+              - Total Discountamount
+            mode: AXIS_DRIVEN
+          - key: trellis-by
+            mode: AXIS_DRIVEN
+        viz_style: "{\"overrides\": {\"legend_properties\": {\"show_legend\": true,\"position\": \"BOTTOM_LEGEND\"},\"data_label_properties\": {\"all_labels\": true},\"display_properties\": {\"gridline_properties\": {\"x_gridline_enabled\": false,\"y_gridline_enabled\": false}},\"axis_properties\": [{\"linked_columns\": [\"Total Salesamount\"],\"properties\": {\"is_name_visible\": false,\"is_label_visible\": true}},{\"linked_columns\": [\"Total Discountamount\"],\"properties\": {\"is_name_visible\": false,\"is_label_visible\": true}}],\"column_properties\": [{\"column_id\": \"Total Salesamount\",\"properties\": {\"color\": \"#3b6fa0\"}},{\"column_id\": \"Total Discountamount\",\"properties\": {\"color\": \"#6b95a8\"}}]}}"
+      display_mode: CHART_MODE
+    viz_guid: b2e60f6f-9046-48d2-b8ef-62db8c990237
+  - id: Viz_19
+    answer:
+      name: Cost and Profit by Region
+      description: Regional cost and profit comparison filtered.
+      tables:
+      - id: Sales Model
+        name: Sales Model
+        fqn: 12bf90fa-0b6a-4cf2-8385-971c53bfb9de
+      search_query: "sum [Costamount] sum [Profitamount] [Region]"
+      answer_columns:
+      - name: Region
+      - name: Total Costamount
+        format:
+          category: CURRENCY
+          currencyFormatConfig:
+            locale: USD
+            unit: AUTO
+            decimals: 1.0
+            toSeparateThousands: true
+            removeTrailingZeroes: true
+          isCategoryEditable: true
+      - name: Total Profitamount
+        format:
+          category: CURRENCY
+          currencyFormatConfig:
+            locale: USD
+            unit: AUTO
+            decimals: 1.0
+            toSeparateThousands: true
+            removeTrailingZeroes: true
+          isCategoryEditable: true
+      table:
+        table_columns:
+        - column_id: Region
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Total Costamount
+          headline_aggregation: SUM
+        - column_id: Total Profitamount
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Region
+        - Total Costamount
+        - Total Profitamount
+        client_state: ""
+      chart:
+        type: ADVANCED_STACKED_BAR
+        chart_columns:
+        - column_id: Region
+        - column_id: Total Costamount
+        - column_id: Total Profitamount
+        client_state: ""
+        custom_chart_config:
+        - key: basic
+          dimensions:
+          - key: y-axis
+            axes:
+            - type: FLAT
+              column: Region
+            mode: AXIS_DRIVEN
+          - key: x-axis
+            axes:
+            - type: MERGED
+              columns:
+              - Total Costamount
+              - Total Profitamount
+            mode: AXIS_DRIVEN
+          - key: slice-with-color
+            mode: AXIS_DRIVEN
+          - key: trellis-by
+            mode: AXIS_DRIVEN
+        viz_style: "{\"overrides\": {\"legend_properties\": {\"show_legend\": true,\"position\": \"BOTTOM_LEGEND\",\"color_palette\": {\"colors\": [\"#b8d4e8\",\"#8fbad6\",\"#3b6fa0\",\"#2d5a82\",\"#1f4563\",\"#b5d8dc\",\"#8cc4cb\",\"#4a7b8c\",\"#3a6270\",\"#2a4a55\",\"#c2dde5\",\"#96c5d1\",\"#5c8a9e\",\"#4a7080\",\"#385662\",\"#ccdfe4\",\"#a3c8d2\",\"#6b95a8\",\"#567888\",\"#415b68\",\"#d4e3ec\",\"#b0cfdc\",\"#7ba3b8\",\"#628494\",\"#4a6570\",\"#dce8ee\",\"#bddae4\",\"#8bb0c2\",\"#6e8f9e\",\"#52707a\",\"#e4edf2\",\"#c8e0ea\",\"#9bbdcc\",\"#7d9aa8\",\"#5f7a84\",\"#ecf2f5\",\"#d4e6ee\",\"#abcad6\",\"#8ca6b2\",\"#6d848e\"]}},\"data_label_properties\": {\"stack_labels_properties\": {\"is_visible\": true},\"column_data_label_properties\": [{\"column_id\": \"Total Costamount\",\"properties\": {\"is_visible\": false}},{\"column_id\": \"Total Profitamount\",\"properties\": {\"is_visible\": false}}]},\"display_properties\": {\"gridline_properties\": {\"x_gridline_enabled\": false,\"y_gridline_enabled\": false}},\"axis_properties\": [{\"linked_columns\": [\"Total Costamount\",\"Total Profitamount\"],\"properties\": {\"is_name_visible\": false,\"is_label_visible\": true}}]}}"
+      display_mode: CHART_MODE
+    viz_guid: dfbe1022-f8d0-4061-803f-2e9108c64c48
+  - id: Viz_20
+    answer:
+      name: Category Sales Year-Over-Year Comparison
+      description: Sales by category comparing yearly totals.
+      tables:
+      - id: Sales Model
+        name: Sales Model
+        fqn: 12bf90fa-0b6a-4cf2-8385-971c53bfb9de
+      search_query: "[Salesamount] [Date] = 'this year' vs [Date] = 'last year' [Category]"
+      answer_columns:
+      - name: Category
+      - name: Salesamount(date = last year)
+        format:
+          category: CURRENCY
+          currencyFormatConfig:
+            locale: USD
+            unit: AUTO
+            decimals: 1.0
+            toSeparateThousands: true
+            removeTrailingZeroes: true
+          isCategoryEditable: true
+      - name: Salesamount(date = this year)
+        format:
+          category: CURRENCY
+          currencyFormatConfig:
+            locale: USD
+            unit: AUTO
+            decimals: 1.0
+            toSeparateThousands: true
+            removeTrailingZeroes: true
+          isCategoryEditable: true
+      table:
+        table_columns:
+        - column_id: Category
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Salesamount(date = last year)
+          headline_aggregation: TABLE_AGGR
+        - column_id: Salesamount(date = this year)
+          headline_aggregation: TABLE_AGGR
+        ordered_column_ids:
+        - Category
+        - Salesamount(date = last year)
+        - Salesamount(date = this year)
+        client_state: ""
+      chart:
+        type: ADVANCED_COLUMN
+        chart_columns:
+        - column_id: Category
+        - column_id: Salesamount(date = last year)
+        - column_id: Salesamount(date = this year)
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"chartSpecific\": {}},\"axisProperties\": [{\"id\": \"b9dd5bd2-e359-46de-b08b-6992b753c28e\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Salesamount(date = last year)\",\"Salesamount(date = this year)\"],\"yAxisRange\": {},\"isOpposite\": false}},{\"id\": \"25980004-4cb7-472f-8cba-fb6143e55f91\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Category\"],\"yAxisRange\": {},\"isOpposite\": false}}]}"
+        custom_chart_config:
+        - key: basic
+          dimensions:
+          - key: x-axis
+            axes:
+            - type: FLAT
+              column: Category
+            mode: AXIS_DRIVEN
+          - key: y-axis
+            axes:
+            - type: MERGED
+              columns:
+              - Salesamount(date = last year)
+              - Salesamount(date = this year)
+            mode: AXIS_DRIVEN
+          - key: slice-with-color
+            mode: AXIS_DRIVEN
+          - key: trellis-by
+            mode: AXIS_DRIVEN
+        viz_style: "{\"overrides\": {\"legend_properties\": {\"show_legend\": true,\"position\": \"BOTTOM_LEGEND\",\"color_palette\": {\"colors\": [\"#b8d4e8\",\"#8fbad6\",\"#3b6fa0\",\"#2d5a82\",\"#1f4563\",\"#b5d8dc\",\"#8cc4cb\",\"#4a7b8c\",\"#3a6270\",\"#2a4a55\",\"#c2dde5\",\"#96c5d1\",\"#5c8a9e\",\"#4a7080\",\"#385662\",\"#ccdfe4\",\"#a3c8d2\",\"#6b95a8\",\"#567888\",\"#415b68\",\"#d4e3ec\",\"#b0cfdc\",\"#7ba3b8\",\"#628494\",\"#4a6570\",\"#dce8ee\",\"#bddae4\",\"#8bb0c2\",\"#6e8f9e\",\"#52707a\",\"#e4edf2\",\"#c8e0ea\",\"#9bbdcc\",\"#7d9aa8\",\"#5f7a84\",\"#ecf2f5\",\"#d4e6ee\",\"#abcad6\",\"#8ca6b2\",\"#6d848e\"]}},\"data_label_properties\": {\"all_labels\": true},\"display_properties\": {\"gridline_properties\": {\"x_gridline_enabled\": false,\"y_gridline_enabled\": false}},\"axis_properties\": [{\"linked_columns\": [\"Salesamount(date = last year)\",\"Salesamount(date = this year)\"],\"properties\": {\"is_name_visible\": false,\"is_label_visible\": true}}]}}"
+      display_mode: CHART_MODE
+    viz_guid: 76c664e1-57e6-4362-96ef-9a7a6ef054d6
+  - id: Viz_21
+    viz_guid: 3695cec3-99c2-457d-8c44-19cb3628a4e5
+    note_tile:
+      html_parsed_string: |-
+        <p><strong>Sales Performance Overview</strong></p>
+        <p><em>Your complete view of commercial health.</em></p>
+        <p>This Liveboard tracks core sales metrics—revenue, profit, and quantity—across regions, product categories, customer segments, and individual salespeople. Use the <strong>date_test</strong> parameter to filter all visualizations by your chosen time period.</p>
+  - id: Viz_22
+    answer:
+      name: Monthly Profit Margin This Year
+      description: Profit margin percentage by month.
+      tables:
+      - id: Sales Model
+        name: Sales Model
+        fqn: 12bf90fa-0b6a-4cf2-8385-971c53bfb9de
+      formulas:
+      - id: formula_Profit Margin %
+        name: Profit Margin %
+        expr: "( sum ( [Profitamount] ) / sum ( [Salesamount] ) ) * 100"
+        was_auto_generated: false
+      search_query: "[formula_Profit Margin %] [Date].monthly [Date] = 'this year'"
+      answer_columns:
+      - name: Month(Date)
+      - name: Profit Margin %
+      table:
+        table_columns:
+        - column_id: Month(Date)
+          headline_aggregation: MIN-MAX
+        - column_id: Profit Margin %
+          headline_aggregation: TABLE_AGGR
+        ordered_column_ids:
+        - Month(Date)
+        - Profit Margin %
+        client_state: ""
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Month(Date)
+        - column_id: Profit Margin %
+        axis_configs:
+        - x:
+          - Month(Date)
+          "y":
+          - Profit Margin %
+        client_state: ""
+      display_mode: CHART_MODE
+    viz_guid: 2a23821d-082e-40d3-81c3-7a2c577b376c
+  - id: Viz_23
+    answer:
+      name: Monthly Average Revenue Per Unit
+      description: ARPU trends by month this year.
+      tables:
+      - id: Sales Model
+        name: Sales Model
+        fqn: 12bf90fa-0b6a-4cf2-8385-971c53bfb9de
+      formulas:
+      - id: formula_Average Revenue per Unit
+        name: Average Revenue per Unit
+        expr: "sum ( [Salesamount] ) / sum ( [Quantity] )"
+        was_auto_generated: false
+      search_query: "[formula_Average Revenue per Unit] [Date].monthly [Date] = 'this year'"
+      answer_columns:
+      - name: Average Revenue per Unit
+      - name: Month(Date)
+      table:
+        table_columns:
+        - column_id: Average Revenue per Unit
+          headline_aggregation: TABLE_AGGR
+        - column_id: Month(Date)
+          headline_aggregation: MIN-MAX
+        ordered_column_ids:
+        - Month(Date)
+        - Average Revenue per Unit
+        client_state: ""
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Average Revenue per Unit
+        - column_id: Month(Date)
+        axis_configs:
+        - x:
+          - Month(Date)
+          "y":
+          - Average Revenue per Unit
+        client_state: ""
+      display_mode: CHART_MODE
+    viz_guid: cc936e2c-2487-4794-a319-f2f2624e1bb7
+  - id: Viz_24
+    answer:
+      name: Monthly Discount Rate Trend
+      description: Discount rate percentage by month yearly.
+      tables:
+      - id: Sales Model
+        name: Sales Model
+        fqn: 12bf90fa-0b6a-4cf2-8385-971c53bfb9de
+      formulas:
+      - id: formula_Discount Rate %
+        name: Discount Rate %
+        expr: "( sum ( [Discountamount] ) / sum ( [Salesamount] ) ) * 100"
+        was_auto_generated: false
+      search_query: "[formula_Discount Rate %] [Date].monthly [Date] = 'this year'"
+      answer_columns:
+      - name: Discount Rate %
+      - name: Month(Date)
+      table:
+        table_columns:
+        - column_id: Discount Rate %
+          headline_aggregation: TABLE_AGGR
+        - column_id: Month(Date)
+          headline_aggregation: MIN-MAX
+        ordered_column_ids:
+        - Month(Date)
+        - Discount Rate %
+        client_state: ""
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Discount Rate %
+        - column_id: Month(Date)
+        axis_configs:
+        - x:
+          - Month(Date)
+          "y":
+          - Discount Rate %
+        client_state: ""
+      display_mode: CHART_MODE
+    viz_guid: 8ba46b8b-25f9-48e3-98bb-19de80a5a383
+  - id: Viz_25
+    answer:
+      name: Profit Margin by Category
+      description: Category-wise profit margin percentage breakdown.
+      tables:
+      - id: Sales Model
+        name: Sales Model
+        fqn: 12bf90fa-0b6a-4cf2-8385-971c53bfb9de
+      formulas:
+      - id: formula_Profit Margin %
+        name: Profit Margin %
+        expr: "( sum ( [Profitamount] ) / sum ( [Salesamount] ) ) * 100"
+        was_auto_generated: false
+      search_query: "[formula_Profit Margin %] [Category]"
+      answer_columns:
+      - name: Category
+      - name: Profit Margin %
+      table:
+        table_columns:
+        - column_id: Category
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Profit Margin %
+          headline_aggregation: TABLE_AGGR
+        ordered_column_ids:
+        - Category
+        - Profit Margin %
+        client_state: ""
+      chart:
+        type: ADVANCED_COLUMN
+        chart_columns:
+        - column_id: Category
+        - column_id: Profit Margin %
+        client_state: ""
+        custom_chart_config:
+        - key: basic
+          dimensions:
+          - key: x-axis
+            axes:
+            - type: FLAT
+              column: Category
+            mode: AXIS_DRIVEN
+          - key: y-axis
+            axes:
+            - type: FLAT
+              column: Profit Margin %
+            mode: AXIS_DRIVEN
+          - key: slice-with-color
+            mode: AXIS_DRIVEN
+          - key: trellis-by
+            mode: AXIS_DRIVEN
+      display_mode: CHART_MODE
+    viz_guid: f25d144e-df23-48aa-9558-70a187221685
+  - id: Viz_26
+    answer:
+      name: Cost Efficiency by Region Category
+      description: Regional and category cost efficiency breakdown.
+      tables:
+      - id: Sales Model
+        name: Sales Model
+        fqn: 12bf90fa-0b6a-4cf2-8385-971c53bfb9de
+      formulas:
+      - id: formula_Cost Efficiency %
+        name: Cost Efficiency %
+        expr: "( sum ( [Costamount] ) / sum ( [Salesamount] ) ) * 100"
+        was_auto_generated: false
+      search_query: "[formula_Cost Efficiency %] [Category] [Region]"
+      answer_columns:
+      - name: Category
+      - name: Cost Efficiency %
+      - name: Region
+      table:
+        table_columns:
+        - column_id: Category
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Cost Efficiency %
+          headline_aggregation: TABLE_AGGR
+        - column_id: Region
+          headline_aggregation: COUNT_DISTINCT
+        ordered_column_ids:
+        - Category
+        - Region
+        - Cost Efficiency %
+        client_state: ""
+      chart:
+        type: HEATMAP
+        chart_columns:
+        - column_id: Category
+        - column_id: Cost Efficiency %
+        - column_id: Region
+        axis_configs:
+        - x:
+          - Category
+          "y":
+          - Region
+          size: Cost Efficiency %
+        client_state: ""
+      display_mode: CHART_MODE
+    viz_guid: f2752c96-130a-430f-b1ed-de67a8ab8401
+  - id: Viz_27
+    answer:
+      name: Profit Margin vs Discount by Subcategory
+      description: Compares profitability and discounts across subcategories.
+      tables:
+      - id: Sales Model
+        name: Sales Model
+        fqn: 12bf90fa-0b6a-4cf2-8385-971c53bfb9de
+      formulas:
+      - id: formula_Discount Rate %
+        name: Discount Rate %
+        expr: "( sum ( [Discountamount] ) / sum ( [Salesamount] ) ) * 100"
+        was_auto_generated: false
+      - id: formula_Profit Margin %
+        name: Profit Margin %
+        expr: "( sum ( [Profitamount] ) / sum ( [Salesamount] ) ) * 100"
+        was_auto_generated: false
+      search_query: "[formula_Profit Margin %] [formula_Discount Rate %] [Subcategory]"
+      answer_columns:
+      - name: Discount Rate %
+      - name: Profit Margin %
+      - name: Subcategory
+      table:
+        table_columns:
+        - column_id: Discount Rate %
+          headline_aggregation: TABLE_AGGR
+        - column_id: Profit Margin %
+          headline_aggregation: TABLE_AGGR
+        - column_id: Subcategory
+          headline_aggregation: COUNT_DISTINCT
+        ordered_column_ids:
+        - Subcategory
+        - Profit Margin %
+        - Discount Rate %
+        client_state: ""
+      chart:
+        type: ADVANCED_SCATTER
+        chart_columns:
+        - column_id: Discount Rate %
+        - column_id: Profit Margin %
+        - column_id: Subcategory
+        client_state: ""
+        custom_chart_config:
+        - key: basic
+          dimensions:
+          - key: x-axis
+            axes:
+            - type: FLAT
+              column: Subcategory
+            mode: AXIS_DRIVEN
+          - key: y-axis
+            axes:
+            - type: MERGED
+              columns:
+              - Profit Margin %
+              - Discount Rate %
+            mode: AXIS_DRIVEN
+          - key: slice-with-color
+            mode: AXIS_DRIVEN
+          - key: trellis-by
+            mode: AXIS_DRIVEN
+      display_mode: CHART_MODE
+    viz_guid: a20a013d-f26f-4222-93cc-08fb2f00612f
+  - id: Viz_28
+    answer:
+      name: Monthly Sales YoY Growth
+      description: Year-over-year sales growth by month.
+      tables:
+      - id: Sales Model
+        name: Sales Model
+        fqn: 12bf90fa-0b6a-4cf2-8385-971c53bfb9de
+      search_query: "growth of [Salesamount] by [Date] [Date].monthly year-over-year [Date] = 'this year' [Date] = 'last year'"
+      answer_columns:
+      - name: Growth of Total Salesamount
+      - name: Month(Date)
+      table:
+        table_columns:
+        - column_id: Growth of Total Salesamount
+          headline_aggregation: MIN
+        - column_id: Month(Date)
+          headline_aggregation: MIN-MAX
+        ordered_column_ids:
+        - Month(Date)
+        - Growth of Total Salesamount
+        client_state: ""
+      chart:
+        type: ADVANCED_LINE
+        chart_columns:
+        - column_id: Growth of Total Salesamount
+        - column_id: Month(Date)
+        client_state: ""
+        custom_chart_config:
+        - key: basic
+          dimensions:
+          - key: x-axis
+            axes:
+            - type: FLAT
+              column: Month(Date)
+            mode: AXIS_DRIVEN
+          - key: y-axis
+            axes:
+            - type: FLAT
+              column: Growth of Total Salesamount
+            mode: AXIS_DRIVEN
+          - key: slice-with-color
+            mode: AXIS_DRIVEN
+          - key: trellis-by
+            mode: AXIS_DRIVEN
+      display_mode: CHART_MODE
+    viz_guid: 1161a440-4824-49a7-aba4-6e1d84659364
+  - id: Viz_29
+    answer:
+      name: Profit and Cost by Region
+      description: Regional comparison of profit and cost.
+      tables:
+      - id: Sales Model
+        name: Sales Model
+        fqn: 12bf90fa-0b6a-4cf2-8385-971c53bfb9de
+      search_query: "[Profitamount] [Costamount] [Region]"
+      answer_columns:
+      - name: Region
+      - name: Total Costamount
+      - name: Total Profitamount
+      table:
+        table_columns:
+        - column_id: Region
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Total Costamount
+          headline_aggregation: SUM
+        - column_id: Total Profitamount
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Region
+        - Total Profitamount
+        - Total Costamount
+        client_state: ""
+      chart:
+        type: ADVANCED_STACKED_COLUMN
+        chart_columns:
+        - column_id: Region
+        - column_id: Total Costamount
+        - column_id: Total Profitamount
+        client_state: ""
+        custom_chart_config:
+        - key: basic
+          dimensions:
+          - key: x-axis
+            axes:
+            - type: FLAT
+              column: Region
+            mode: AXIS_DRIVEN
+          - key: y-axis
+            axes:
+            - type: MERGED
+              columns:
+              - Total Profitamount
+              - Total Costamount
+            mode: AXIS_DRIVEN
+          - key: slice-with-color
+            mode: AXIS_DRIVEN
+          - key: trellis-by
+            mode: AXIS_DRIVEN
+      display_mode: CHART_MODE
+    viz_guid: 10228547-a1e0-4e7d-8618-4f417e3c572f
+  - id: Viz_30
+    answer:
+      name: Top 10 Brands by AOV
+      description: Brands ranked by average order value.
+      tables:
+      - id: Sales Model
+        name: Sales Model
+        fqn: 12bf90fa-0b6a-4cf2-8385-971c53bfb9de
+      formulas:
+      - id: formula_Brand rank
+        name: Brand rank
+        expr: "rank ( [formula_Average Order Value] , 'desc' )"
+        was_auto_generated: false
+      - id: formula_Average Order Value
+        name: Average Order Value
+        expr: "sum ( [Salesamount] ) / sum ( [Quantity] )"
+        was_auto_generated: false
+      search_query: "top 10 [Brand] [formula_Average Order Value] [formula_Brand rank] sort by [formula_Average Order Value]"
+      answer_columns:
+      - name: Average Order Value
+      - name: Brand
+      - name: Brand rank
+      table:
+        table_columns:
+        - column_id: Average Order Value
+          headline_aggregation: TABLE_AGGR
+        - column_id: Brand
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Brand rank
+          headline_aggregation: COUNT_DISTINCT
+        ordered_column_ids:
+        - Brand
+        - Brand rank
+        - Average Order Value
+        client_state: ""
+      chart:
+        type: ADVANCED_BAR
+        chart_columns:
+        - column_id: Average Order Value
+        - column_id: Brand
+        - column_id: Brand rank
+        client_state: ""
+        custom_chart_config:
+        - key: basic
+          dimensions:
+          - key: x-axis
+            axes:
+            - type: FLAT
+              column: Average Order Value
+            mode: AXIS_DRIVEN
+          - key: y-axis
+            axes:
+            - type: FLAT
+              column: Brand
+            mode: AXIS_DRIVEN
+          - key: slice-with-color
+            mode: AXIS_DRIVEN
+          - key: trellis-by
+            mode: AXIS_DRIVEN
+      display_mode: CHART_MODE
+    viz_guid: dafcdb94-607f-4d1b-9169-71b7beb62367
+  - id: Viz_31
+    answer:
+      name: Quarterly Sales and Profit Margins
+      description: Sales and profit margin by quarter.
+      tables:
+      - id: Sales Model
+        name: Sales Model
+        fqn: 12bf90fa-0b6a-4cf2-8385-971c53bfb9de
+      formulas:
+      - id: formula_Profit Margin %
+        name: Profit Margin %
+        expr: "( sum ( [Profitamount] ) / sum ( [Salesamount] ) ) * 100"
+        was_auto_generated: false
+      search_query: "[Salesamount] [formula_Profit Margin %] [Date].quarterly [Date] = 'this year'"
+      answer_columns:
+      - name: Profit Margin %
+      - name: Quarter(Date)
+      - name: Total Salesamount
+      table:
+        table_columns:
+        - column_id: Profit Margin %
+          headline_aggregation: TABLE_AGGR
+        - column_id: Quarter(Date)
+          headline_aggregation: MIN-MAX
+        - column_id: Total Salesamount
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Quarter(Date)
+        - Total Salesamount
+        - Profit Margin %
+        client_state: ""
+      chart:
+        type: ADVANCED_LINE_COLUMN
+        chart_columns:
+        - column_id: Profit Margin %
+        - column_id: Quarter(Date)
+        - column_id: Total Salesamount
+        client_state: ""
+        custom_chart_config:
+        - key: basic
+          dimensions:
+          - key: x-axis
+            axes:
+            - type: FLAT
+              column: Quarter(Date)
+            mode: AXIS_DRIVEN
+          - key: y-axis-column
+            axes:
+            - type: MERGED
+              columns:
+              - Total Salesamount
+            mode: AXIS_DRIVEN
+          - key: y-axis-line
+            axes:
+            - type: MERGED
+              columns:
+              - Profit Margin %
+            mode: AXIS_DRIVEN
+          - key: trellis-by
+            mode: AXIS_DRIVEN
+      display_mode: CHART_MODE
+    viz_guid: 9b58f683-fdb9-4afd-bb28-319f04611015
+  groups:
+  - id: Group_1
+    name: Key Performance Indicators
+    description: Headline metrics with time-series trends
+    visualizations:
+    - Viz_9
+    - Viz_10
+    - Viz_11
+    - Viz_1
+    group_guid: cc462a4e-33fc-485e-94ff-39f86e4ed6b1
+  - id: Group_2
+    name: Efficiency KPIs
+    description: "Calculated ratio metrics tracking margin, pricing, and discounting"
+    visualizations:
+    - Viz_22
+    - Viz_23
+    - Viz_24
+    group_guid: 87f37993-bb89-4fee-b63c-617e3fa18b60
+  - id: Group_3
+    name: Trend Analysis
+    description: Revenue and profit trends over time
+    visualizations:
+    - Viz_2
+    - Viz_3
+    group_guid: 548b5631-69d3-4dff-91b0-ffe5997c219a
+  - id: Group_4
+    name: Regional Performance
+    description: Sales and profit breakdown by region
+    visualizations:
+    - Viz_12
+    - Viz_13
+    - Viz_19
+    group_guid: 08075664-ca59-4a38-9f99-ae7b2d10528f
+  - id: Group_5
+    name: Product Performance
+    description: "Category, subcategory, and brand analysis"
+    visualizations:
+    - Viz_14
+    - Viz_15
+    - Viz_16
+    group_guid: 96e13f8c-b34a-4380-9601-5c4d6f24ab4b
+  - id: Group_6
+    name: Customer Segments
+    description: Sales distribution by customer segment
+    visualizations:
+    - Viz_17
+    - Viz_4
+    group_guid: 1324a6f5-9df7-405e-b1d0-1cdb6b411fc3
+  - id: Group_7
+    name: Profitability Analysis
+    description: Sales vs profit correlation and Pareto analysis
+    visualizations:
+    - Viz_5
+    - Viz_6
+    group_guid: a655ccd9-afa9-4890-b35c-1dbe812602d0
+  - id: Group_8
+    name: Discount & Cost Analysis
+    description: Sales trends vs discounts and regional cost breakdown
+    visualizations:
+    - Viz_18
+    - Viz_20
+    group_guid: 39670c9e-f8fa-4a64-96ef-455a4b024ea2
+  - id: Group_9
+    name: Salesperson Performance
+    description: Top performers and regional coverage
+    visualizations:
+    - Viz_7
+    - Viz_8
+    group_guid: cec8b89a-7754-493c-8c74-0e61d7f68af3
+  - id: Group_10
+    name: Margin & Efficiency Analysis
+    description: Calculated measures showing profitability and cost efficiency
+    visualizations:
+    - Viz_25
+    - Viz_26
+    - Viz_27
+    group_guid: d7b5ff3b-be2f-4320-adb2-ebb8931c7b8e
+  - id: Group_11
+    name: Growth & Value Metrics
+    description: "Year-over-year growth, cost composition, and average order value"
+    visualizations:
+    - Viz_28
+    - Viz_29
+    - Viz_30
+    - Viz_31
+    group_guid: f05e29a8-97ad-457a-86a5-a84dbc5cb3f8
+  layout:
+    tiles:
+    - visualization_id: Viz_21
+      x: 0
+      "y": 0
+      height: 5
+      width: 3
+    - visualization_id: Group_1
+      x: 3
+      "y": 0
+      height: 5
+      width: 9
+    - visualization_id: Group_2
+      x: 0
+      "y": 5
+      height: 5
+      width: 12
+    - visualization_id: Group_3
+      x: 0
+      "y": 10
+      height: 8
+      width: 12
+    - visualization_id: Group_4
+      x: 0
+      "y": 18
+      height: 8
+      width: 12
+    - visualization_id: Group_5
+      x: 0
+      "y": 26
+      height: 10
+      width: 12
+    - visualization_id: Group_6
+      x: 0
+      "y": 36
+      height: 8
+      width: 6
+    - visualization_id: Group_7
+      x: 6
+      "y": 36
+      height: 8
+      width: 6
+    - visualization_id: Group_8
+      x: 0
+      "y": 44
+      height: 8
+      width: 12
+    - visualization_id: Group_9
+      x: 0
+      "y": 52
+      height: 8
+      width: 12
+    - visualization_id: Group_10
+      x: 0
+      "y": 60
+      height: 8
+      width: 12
+    - visualization_id: Group_11
+      x: 0
+      "y": 68
+      height: 8
+      width: 12
+    group_layouts:
+    - id: Group_1
+      tiles:
+      - visualization_id: Viz_9
+        x: 0
+        "y": 0
+        height: 5
+        width: 3
+      - visualization_id: Viz_10
+        x: 3
+        "y": 0
+        height: 5
+        width: 3
+      - visualization_id: Viz_11
+        x: 6
+        "y": 0
+        height: 5
+        width: 3
+      - visualization_id: Viz_1
+        x: 9
+        "y": 0
+        height: 5
+        width: 3
+    - id: Group_2
+      tiles:
+      - visualization_id: Viz_22
+        x: 0
+        "y": 0
+        height: 5
+        width: 4
+      - visualization_id: Viz_23
+        x: 4
+        "y": 0
+        height: 5
+        width: 4
+      - visualization_id: Viz_24
+        x: 8
+        "y": 0
+        height: 5
+        width: 4
+    - id: Group_3
+      tiles:
+      - visualization_id: Viz_2
+        x: 0
+        "y": 0
+        height: 8
+        width: 6
+      - visualization_id: Viz_3
+        x: 6
+        "y": 0
+        height: 8
+        width: 6
+    - id: Group_4
+      tiles:
+      - visualization_id: Viz_12
+        x: 0
+        "y": 0
+        height: 8
+        width: 4
+      - visualization_id: Viz_13
+        x: 4
+        "y": 0
+        height: 8
+        width: 4
+      - visualization_id: Viz_19
+        x: 8
+        "y": 0
+        height: 8
+        width: 4
+    - id: Group_5
+      tiles:
+      - visualization_id: Viz_14
+        x: 0
+        "y": 0
+        height: 10
+        width: 4
+      - visualization_id: Viz_15
+        x: 4
+        "y": 0
+        height: 10
+        width: 4
+      - visualization_id: Viz_16
+        x: 8
+        "y": 0
+        height: 10
+        width: 4
+    - id: Group_6
+      tiles:
+      - visualization_id: Viz_17
+        x: 0
+        "y": 0
+        height: 8
+        width: 6
+      - visualization_id: Viz_4
+        x: 6
+        "y": 0
+        height: 8
+        width: 6
+    - id: Group_7
+      tiles:
+      - visualization_id: Viz_5
+        x: 0
+        "y": 0
+        height: 8
+        width: 6
+      - visualization_id: Viz_6
+        x: 6
+        "y": 0
+        height: 8
+        width: 6
+    - id: Group_8
+      tiles:
+      - visualization_id: Viz_18
+        x: 0
+        "y": 0
+        height: 8
+        width: 6
+      - visualization_id: Viz_20
+        x: 6
+        "y": 0
+        height: 8
+        width: 6
+    - id: Group_9
+      tiles:
+      - visualization_id: Viz_7
+        x: 0
+        "y": 0
+        height: 8
+        width: 6
+      - visualization_id: Viz_8
+        x: 6
+        "y": 0
+        height: 8
+        width: 6
+    - id: Group_10
+      tiles:
+      - visualization_id: Viz_25
+        x: 0
+        "y": 0
+        height: 8
+        width: 4
+      - visualization_id: Viz_26
+        x: 4
+        "y": 0
+        height: 8
+        width: 4
+      - visualization_id: Viz_27
+        x: 8
+        "y": 0
+        height: 8
+        width: 4
+    - id: Group_11
+      tiles:
+      - visualization_id: Viz_28
+        x: 0
+        "y": 0
+        height: 8
+        width: 3
+      - visualization_id: Viz_29
+        x: 3
+        "y": 0
+        height: 8
+        width: 3
+      - visualization_id: Viz_30
+        x: 6
+        "y": 0
+        height: 8
+        width: 3
+      - visualization_id: Viz_31
+        x: 9
+        "y": 0
+        height: 8
+        width: 3
+  style:
+    style_properties:
+    - name: lb_border_type
+      value: CURVED
+    - name: lb_brand_color
+      value: LBC_C
+    - name: hide_group_title
+      value: "false"
+    - name: hide_group_description
+      value: "true"
+    - name: hide_group_tile_description
+      value: "false"
+    - name: hide_tile_description
+      value: "false"
+    - name: kpi_hero_font_size
+      value: M
+    overrides:
+    - object_id: Viz_1
+      style_properties:
+      - name: tile_brand_color
+        value: TBC_F
+    - object_id: Group_7
+      style_properties:
+      - name: group_brand_color
+        value: GBC_C
+    - object_id: Group_6
+      style_properties:
+      - name: group_brand_color
+        value: GBC_C
+    - object_id: Group_8
+      style_properties:
+      - name: group_brand_color
+        value: GBC_C
+    - object_id: Group_1
+      style_properties:
+      - name: group_brand_color
+        value: GBC_C
+      - name: hide_group_description
+        value: "true"
+    - object_id: Group_5
+      style_properties:
+      - name: group_brand_color
+        value: GBC_C
+    - object_id: Group_3
+      style_properties:
+      - name: group_brand_color
+        value: GBC_C
+    - object_id: Viz_11
+      style_properties:
+      - name: tile_brand_color
+        value: TBC_E
+    - object_id: Viz_10
+      style_properties:
+      - name: tile_brand_color
+        value: TBC_D
+    - object_id: Viz_9
+      style_properties:
+      - name: tile_brand_color
+        value: TBC_C
+    - object_id: Group_9
+      style_properties:
+      - name: group_brand_color
+        value: GBC_C
+    - object_id: Group_4
+      style_properties:
+      - name: group_brand_color
+        value: GBC_C

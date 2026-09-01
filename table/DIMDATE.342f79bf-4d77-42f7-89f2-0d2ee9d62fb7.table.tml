@@ -1,0 +1,78 @@
+guid: 342f79bf-4d77-42f7-89f2-0d2ee9d62fb7
+table:
+  name: DIMDATE
+  db: SALES_DW
+  schema: STAR_SCHEMA
+  db_table: DIMDATE
+  connection:
+    name: Sales Case Study
+    fqn: 29697fbd-ca74-42f8-a5b3-deb99daa6deb
+  columns:
+  - name: DATEKEY
+    db_column_name: DATEKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: FULLDATE
+    db_column_name: FULLDATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: DAY
+    db_column_name: DAY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: MONTH
+    db_column_name: MONTH
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: MONTHNAME
+    db_column_name: MONTHNAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: QUARTER
+    db_column_name: QUARTER
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: YEAR
+    db_column_name: YEAR
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: WEEKOFYEAR
+    db_column_name: WEEKOFYEAR
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: ISWEEKEND
+    db_column_name: ISWEEKEND
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: BOOL
+  properties:
+    spotter_config:
+      is_spotter_enabled: false

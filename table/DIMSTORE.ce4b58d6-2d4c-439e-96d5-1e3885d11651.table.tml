@@ -1,0 +1,57 @@
+guid: ce4b58d6-2d4c-439e-96d5-1e3885d11651
+table:
+  name: DIMSTORE
+  db: SALES_DW
+  schema: STAR_SCHEMA
+  db_table: DIMSTORE
+  connection:
+    name: Sales Case Study
+    fqn: 29697fbd-ca74-42f8-a5b3-deb99daa6deb
+  columns:
+  - name: STOREKEY
+    db_column_name: STOREKEY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: STOREID
+    db_column_name: STOREID
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: STORENAME
+    db_column_name: STORENAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: CITY
+    db_column_name: CITY
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: STATE
+    db_column_name: STATE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: COUNTRY
+    db_column_name: COUNTRY
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: REGION
+    db_column_name: REGION
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  properties:
+    spotter_config:
+      is_spotter_enabled: false
