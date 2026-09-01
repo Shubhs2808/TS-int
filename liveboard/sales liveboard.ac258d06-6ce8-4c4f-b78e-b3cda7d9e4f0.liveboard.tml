@@ -1,6 +1,6 @@
 guid: ac258d06-6ce8-4c4f-b78e-b3cda7d9e4f0
 liveboard:
-  name: sales liveboard
+  name: sales liveboard test
   visualizations:
   - id: Viz_1
     answer:
