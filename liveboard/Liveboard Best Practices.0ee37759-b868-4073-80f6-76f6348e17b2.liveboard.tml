@@ -5,7 +5,7 @@ liveboard:
   visualizations:
   - id: Viz_1
     answer:
-      name: "<img style=\"width: 40px; height: 30px;\" alt=\"Category Market Overview\" src=\"https://w7.pngwing.com/pngs/866/721/png-transparent-magnifying-glass-market-analysis-market-research-company-analytic-text-service-logo.png\">   kpi chart for @measure name"
+      name: kpi chart for @measure name
       description: This is KPI chartbsskfslhf sfsf'a sf sfjsfsfsfsfsbfsbf
       tables:
       - id: (Sample) Retail - Apparel
@@ -54,7 +54,7 @@ liveboard:
           - value: sales
           - value: quantity purchased
         description: ""
-      dynamic_name: "<img style=\"width: 40px; height: 30px;\" alt=\"Category Market Overview\" src=\"https://w7.pngwing.com/pngs/866/721/png-transparent-magnifying-glass-market-analysis-market-research-company-analytic-text-service-logo.png\">   kpi chart for [${PARAMETER:measure name}]"
+      dynamic_name: "kpi chart for [${PARAMETER:measure name}]"
       dynamic_description: This is KPI chartbsskfslhf sfsf'a sf sfjsfsfsfsfsbfsbf
     viz_guid: e593f41f-41ac-403a-9c76-f938c15a9a75
   - id: Viz_2
@@ -981,6 +981,13 @@ liveboard:
     - Viz_2
     - Viz_3
     group_guid: 999f7af7-0c2c-462e-b96f-4a67e0b69ad4
+  - id: Group_2
+    name: Regional analysis
+    description: this analysis represents
+    visualizations:
+    - Viz_5
+    - Viz_8
+    group_guid: 1bdd659b-40b2-49b3-b561-9a85a74f3322
   filters:
   - column:
     - (Sample) Retail - Apparel::date
@@ -1042,31 +1049,26 @@ liveboard:
         "y": 5
         height: 9
         width: 4
-      - visualization_id: Viz_5
-        x: 0
-        "y": 18
-        height: 8
-        width: 6
-      - visualization_id: Viz_8
-        x: 6
-        "y": 18
-        height: 8
-        width: 6
       - visualization_id: Viz_12
         x: 0
-        "y": 26
+        "y": 25
         height: 8
         width: 12
       - visualization_id: Viz_14
         x: 0
-        "y": 34
+        "y": 33
         height: 4
         width: 3
       - visualization_id: Viz_15
         x: 3
-        "y": 34
+        "y": 33
         height: 4
         width: 3
+      - visualization_id: Group_2
+        x: 0
+        "y": 18
+        height: 7
+        width: 12
       id: bc21fd2f-b7aa-473e-bef5-88f6d4b4f85a
       group_layouts:
       - id: Group_1
@@ -1086,6 +1088,18 @@ liveboard:
           "y": 0
           height: 5
           width: 4
+      - id: Group_2
+        tiles:
+        - visualization_id: Viz_8
+          x: 6
+          "y": 0
+          height: 8
+          width: 6
+        - visualization_id: Viz_5
+          x: 0
+          "y": 0
+          height: 8
+          width: 6
     - name: Details
       description: ""
       tiles:
@@ -1202,7 +1216,7 @@ liveboard:
     - name: lb_border_type
       value: CURVED
     - name: lb_brand_color
-      value: LBC_G
+      value: LBC_C
     - name: hide_group_title
       value: "true"
     - name: hide_group_description
@@ -1214,7 +1228,7 @@ liveboard:
     - name: hide_tile_description
       value: "true"
     - name: kpi_hero_font_size
-      value: XL
+      value: L
     overrides:
     - object_id: Group_1
       style_properties:
@@ -1230,6 +1244,16 @@ liveboard:
         value: XL
       - name: is_linked
         value: "false"
+    - object_id: Viz_4
+      style_properties:
+      - name: tile_brand_color
+        value: TBC_G
+      - name: hide_tile_description
+        value: "false"
+      - name: kpi_hero_font_size
+        value: XL
+      - name: is_linked
+        value: "false"
     - object_id: Viz_1
       style_properties:
       - name: tile_brand_color
@@ -1240,5 +1264,19 @@ liveboard:
         value: "false"
       - name: kpi_hero_font_size
         value: S
+      - name: is_linked
+        value: "false"
+    - object_id: Group_2
+      style_properties:
+      - name: group_brand_color
+        value: GBC_D
+      - name: hide_group_title
+        value: "false"
+      - name: hide_group_description
+        value: "false"
+      - name: hide_group_tile_description
+        value: "true"
+      - name: kpi_hero_font_size
+        value: XL
       - name: is_linked
         value: "false"

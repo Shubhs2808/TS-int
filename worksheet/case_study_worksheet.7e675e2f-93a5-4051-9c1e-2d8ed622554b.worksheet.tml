@@ -332,7 +332,8 @@ model:
       index_type: DONT_INDEX
       synonyms:
       - Day
-      format_pattern: yyyy/MM/dd
+      calendar: financial calendar1
+      format_pattern: MM/dd/yyyy
       synonym_type: AUTO_GENERATED
       ai_context: Transaction date in standard format enabling chronological analysis and time-series business performance tracking
   - name: Is Holiday
