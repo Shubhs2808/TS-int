@@ -973,6 +973,42 @@ liveboard:
       target_agent: insight_code_runner
       analysis_code: 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
       template_id: text_long_form
+  - id: Viz_21
+    answer:
+      name: Total sales by Monthly date
+      tables:
+      - id: (Sample) Retail - Apparel
+        name: (Sample) Retail - Apparel
+        fqn: cd252e5c-b552-49a8-821d-3eadaa049cca
+      search_query: "[sales] [date].monthly"
+      answer_columns:
+      - name: Month(date)
+      - name: Total sales
+      table:
+        table_columns:
+        - column_id: Month(date)
+          show_headline: false
+        - column_id: Total sales
+          show_headline: false
+        ordered_column_ids:
+        - Month(date)
+        - Total sales
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Month(date)
+        - column_id: Total sales
+        axis_configs:
+        - x:
+          - Month(date)
+          "y":
+          - Total sales
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Total sales\",\"columnProperty\": {\"kpiColumnProperties\": {\"showSparkline\": true,\"showComparisonDate\": true,\"showCurrentDateLabel\": true,\"showPreviousDateLabel\": true,\"showPreviousValue\": true}}},{\"columnId\": \"Measure names\",\"columnProperty\": {\"kpiColumnProperties\": {\"showSparkline\": true,\"showComparisonDate\": true,\"showCurrentDateLabel\": true,\"showPreviousDateLabel\": true,\"showPreviousValue\": true}}},{\"columnId\": \"Measure values\",\"columnProperty\": {\"kpiColumnProperties\": {\"showSparkline\": true,\"showComparisonDate\": true,\"showCurrentDateLabel\": true,\"showPreviousDateLabel\": true,\"showPreviousValue\": true}}},{\"columnId\": \"Month(date)\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"324b07b5-8d1c-42ff-ab76-0e808b53709a\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total sales\"],\"isOpposite\": false}},{\"id\": \"8ba2b682-75fb-4bfc-8467-48ef57eb27e1\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Month(date)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Total sales\",\"color\": \"#2E75F0\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 09643774-eb76-4cf5-94d6-d87325f0a44f
   groups:
   - id: Group_1
     name: Overview
@@ -1069,6 +1105,7 @@ liveboard:
         "y": 18
         height: 7
         width: 12
+      - visualization_id: Viz_21
       id: bc21fd2f-b7aa-473e-bef5-88f6d4b4f85a
       group_layouts:
       - id: Group_1
