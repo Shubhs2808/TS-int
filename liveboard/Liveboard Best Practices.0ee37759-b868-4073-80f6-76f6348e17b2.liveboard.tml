@@ -1106,10 +1106,19 @@ liveboard:
         height: 7
         width: 12
       - visualization_id: Viz_21
+        x: 6
+        "y": 33
+        height: 4
+        width: 3
       id: bc21fd2f-b7aa-473e-bef5-88f6d4b4f85a
       group_layouts:
       - id: Group_1
         tiles:
+        - visualization_id: Viz_1
+          x: 0
+          "y": 0
+          height: 5
+          width: 4
         - visualization_id: Viz_2
           x: 4
           "y": 0
@@ -1120,20 +1129,15 @@ liveboard:
           "y": 0
           height: 5
           width: 4
-        - visualization_id: Viz_1
-          x: 0
-          "y": 0
-          height: 5
-          width: 4
       - id: Group_2
         tiles:
-        - visualization_id: Viz_8
-          x: 6
+        - visualization_id: Viz_5
+          x: 0
           "y": 0
           height: 8
           width: 6
-        - visualization_id: Viz_5
-          x: 0
+        - visualization_id: Viz_8
+          x: 6
           "y": 0
           height: 8
           width: 6
