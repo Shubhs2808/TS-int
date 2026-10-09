@@ -1009,6 +1009,71 @@ liveboard:
         client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Total sales\",\"columnProperty\": {\"kpiColumnProperties\": {\"showSparkline\": true,\"showComparisonDate\": true,\"showCurrentDateLabel\": true,\"showPreviousDateLabel\": true,\"showPreviousValue\": true}}},{\"columnId\": \"Measure names\",\"columnProperty\": {\"kpiColumnProperties\": {\"showSparkline\": true,\"showComparisonDate\": true,\"showCurrentDateLabel\": true,\"showPreviousDateLabel\": true,\"showPreviousValue\": true}}},{\"columnId\": \"Measure values\",\"columnProperty\": {\"kpiColumnProperties\": {\"showSparkline\": true,\"showComparisonDate\": true,\"showCurrentDateLabel\": true,\"showPreviousDateLabel\": true,\"showPreviousValue\": true}}},{\"columnId\": \"Month(date)\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"324b07b5-8d1c-42ff-ab76-0e808b53709a\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total sales\"],\"isOpposite\": false}},{\"id\": \"8ba2b682-75fb-4bfc-8467-48ef57eb27e1\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Month(date)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Total sales\",\"color\": \"#2E75F0\"}]}"
       display_mode: CHART_MODE
     viz_guid: 09643774-eb76-4cf5-94d6-d87325f0a44f
+  - id: Viz_22
+    answer:
+      name: "Total Net Sales, Total Profit Amount, Total Profit Margin, Total Quantity Sold by Sub Category"
+      tables:
+      - id: Sales Performance
+        name: Sales Performance
+        fqn: 252e23ae-d3b2-4249-a610-595de389aa7b
+      search_query: "[Net Sales] [Profit Amount] [Profit Margin] [Quantity Sold] by [Sub Category]"
+      answer_columns:
+      - name: Sub Category
+      - name: Total Net Sales
+      - name: Total Profit Amount
+      - name: Total Profit Margin
+      - name: Total Quantity Sold
+      table:
+        table_columns:
+        - column_id: Sub Category
+          show_headline: false
+        - column_id: Total Net Sales
+          show_headline: false
+        - column_id: Total Profit Amount
+          show_headline: false
+        - column_id: Total Profit Margin
+          show_headline: false
+        - column_id: Total Quantity Sold
+          show_headline: false
+        ordered_column_ids:
+        - Sub Category
+        - Total Net Sales
+        - Total Profit Amount
+        - Total Profit Margin
+        - Total Quantity Sold
+        client_state: ""
+      chart:
+        type: ADVANCED_COLUMN
+        chart_columns:
+        - column_id: Sub Category
+        - column_id: Total Net Sales
+        - column_id: Total Profit Amount
+        - column_id: Total Profit Margin
+        - column_id: Total Quantity Sold
+        client_state: ""
+        custom_chart_config:
+        - key: basic
+          dimensions:
+          - key: x-axis
+            axes:
+            - type: FLAT
+              column: Sub Category
+            mode: AXIS_DRIVEN
+          - key: y-axis
+            axes:
+            - type: FLAT
+              column: Total Net Sales
+            - type: FLAT
+              column: Total Profit Amount
+            - type: FLAT
+              column: Total Profit Margin
+            mode: AXIS_DRIVEN
+          - key: slice-with-color
+            mode: AXIS_DRIVEN
+          - key: trellis-by
+            mode: AXIS_DRIVEN
+      display_mode: TABLE_MODE
+    viz_guid: e9096f5b-2560-4267-9aee-697fabc70c33
   groups:
   - id: Group_1
     name: Overview
@@ -1179,6 +1244,7 @@ liveboard:
         "y": 29
         height: 8
         width: 6
+      - visualization_id: Viz_22
       id: bc1367ad-377d-47da-b750-7adb50105cf3
   ordered_chips:
   - name: (Sample) Retail - Apparel::date
@@ -1197,11 +1263,15 @@ liveboard:
         date_range:
           start_date: 03/01/2024
           end_date: 01/01/2026
+      applicability:
+        level: LIVEBOARD
     - column:
       - (Sample) Retail - Apparel::region
       oper: in
       values:
       - Midwest
+      applicability:
+        level: LIVEBOARD
     is_public: false
   - view_guid: f4ee2490-8e82-4f5d-ba15-0fb1a0c0a804
     name: My view
@@ -1215,9 +1285,13 @@ liveboard:
           start_date: 03/13/2024
           end_date: 01/01/2026
         include_current_period: false
+      applicability:
+        level: LIVEBOARD
     - column:
       - (Sample) Retail - Apparel::region
       oper: in
+      applicability:
+        level: LIVEBOARD
     is_public: false
   - view_guid: 174ce642-2386-4506-88e2-22d5b98a1785
     name: latest data
@@ -1228,11 +1302,15 @@ liveboard:
         type: THIS_PERIOD
         oper: =
         date_period: MONTH
+      applicability:
+        level: LIVEBOARD
     - column:
       - (Sample) Retail - Apparel::region
       oper: in
       values:
       - Midwest
+      applicability:
+        level: LIVEBOARD
     is_public: false
   - view_guid: 05c517f5-60d5-48f0-b7d7-d04434016487
     name: new view
@@ -1245,12 +1323,16 @@ liveboard:
         date_range:
           start_date: 03/01/2024
           end_date: 01/01/2026
+      applicability:
+        level: LIVEBOARD
     - column:
       - (Sample) Retail - Apparel::region
       oper: in
       values:
       - East
       - Midwest
+      applicability:
+        level: LIVEBOARD
     is_public: false
   style:
     style_properties:
