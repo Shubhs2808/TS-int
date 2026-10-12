@@ -1206,6 +1206,21 @@ liveboard:
           "y": 0
           height: 8
           width: 6
+      filters:
+      - column:
+        - (Sample) Retail - Apparel::county
+        excluded_visualizations:
+        - Viz_6
+        - Viz_4
+        - Viz_12
+        - Viz_14
+        - Viz_15
+        is_mandatory: false
+        is_single_value: false
+        display_name: ""
+      ordered_chips:
+      - name: (Sample) Retail - Apparel::county
+        type: FILTER
     - name: Details
       description: ""
       tiles:
@@ -1245,6 +1260,10 @@ liveboard:
         height: 8
         width: 6
       - visualization_id: Viz_22
+        x: 0
+        "y": 37
+        height: 8
+        width: 12
       id: bc1367ad-377d-47da-b750-7adb50105cf3
   ordered_chips:
   - name: (Sample) Retail - Apparel::date
@@ -1272,6 +1291,12 @@ liveboard:
       - Midwest
       applicability:
         level: LIVEBOARD
+    - column:
+      - (Sample) Retail - Apparel::county
+      oper: in
+      applicability:
+        level: TAB
+        target_id: bc21fd2f-b7aa-473e-bef5-88f6d4b4f85a
     is_public: false
   - view_guid: f4ee2490-8e82-4f5d-ba15-0fb1a0c0a804
     name: My view
@@ -1292,6 +1317,12 @@ liveboard:
       oper: in
       applicability:
         level: LIVEBOARD
+    - column:
+      - (Sample) Retail - Apparel::county
+      oper: in
+      applicability:
+        level: TAB
+        target_id: bc21fd2f-b7aa-473e-bef5-88f6d4b4f85a
     is_public: false
   - view_guid: 174ce642-2386-4506-88e2-22d5b98a1785
     name: latest data
@@ -1311,6 +1342,12 @@ liveboard:
       - Midwest
       applicability:
         level: LIVEBOARD
+    - column:
+      - (Sample) Retail - Apparel::county
+      oper: in
+      applicability:
+        level: TAB
+        target_id: bc21fd2f-b7aa-473e-bef5-88f6d4b4f85a
     is_public: false
   - view_guid: 05c517f5-60d5-48f0-b7d7-d04434016487
     name: new view
@@ -1333,6 +1370,12 @@ liveboard:
       - Midwest
       applicability:
         level: LIVEBOARD
+    - column:
+      - (Sample) Retail - Apparel::county
+      oper: in
+      applicability:
+        level: TAB
+        target_id: bc21fd2f-b7aa-473e-bef5-88f6d4b4f85a
     is_public: false
   style:
     style_properties:
