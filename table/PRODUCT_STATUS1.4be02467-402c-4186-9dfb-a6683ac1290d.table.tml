@@ -22,6 +22,18 @@ table:
       column_type: ATTRIBUTE
     db_column_properties:
       data_type: VARCHAR
+  rls_rules:
+    tables:
+    - name: PRODUCT_STATUS1
+      fqn: 4be02467-402c-4186-9dfb-a6683ac1290d
+    table_paths:
+    - id: PRODUCT_STATUS1_1
+      table: PRODUCT_STATUS1
+      column:
+      - STATUS
+    rules:
+    - name: Untitled
+      expr: "[PRODUCT_STATUS1_1::STATUS] = 'yes'"
   properties:
     spotter_config:
       is_spotter_enabled: false

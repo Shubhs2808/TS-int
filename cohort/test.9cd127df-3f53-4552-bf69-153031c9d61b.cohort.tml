@@ -1,0 +1,34 @@
+guid: 9cd127df-3f53-4552-bf69-153031c9d61b
+cohort:
+  name: test
+  answer:
+    tables:
+    - id: Copy of case_study_worksheet
+      name: Copy of case_study_worksheet
+      fqn: 47350e79-4795-4c9b-a904-1e89bdf1d358
+    search_query: "[Product] [Sales]"
+    answer_columns:
+    - name: Product
+    - name: Total Sales
+    table:
+      table_columns:
+      - column_id: Product
+        show_headline: false
+      - column_id: Total Sales
+        show_headline: false
+      ordered_column_ids:
+      - Product
+      - Total Sales
+      client_state: ""
+    display_mode: TABLE_MODE
+  owner: shubham.sonawane
+  worksheet:
+    id: Copy of case_study_worksheet
+    name: Copy of case_study_worksheet
+    fqn: 47350e79-4795-4c9b-a904-1e89bdf1d358
+  config:
+    cohort_type: ADVANCED
+    anchor_column_id: Product
+    return_column_id: Total Sales
+    cohort_grouping_type: COLUMN_BASED
+    hide_excluded_query_values: true

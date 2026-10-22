@@ -1074,6 +1074,50 @@ liveboard:
             mode: AXIS_DRIVEN
       display_mode: TABLE_MODE
     viz_guid: e9096f5b-2560-4267-9aee-697fabc70c33
+  - id: Viz_23
+    answer:
+      name: setsharing
+      tables:
+      - id: Copy of case_study_worksheet
+        name: Copy of case_study_worksheet
+        fqn: 47350e79-4795-4c9b-a904-1e89bdf1d358
+      search_query: "[Product] [Sales] [test]"
+      answer_columns:
+      - name: Product
+      - name: Total Sales
+      - name: test
+      table:
+        table_columns:
+        - column_id: Product
+          show_headline: false
+        - column_id: Total Sales
+          show_headline: false
+        - column_id: test
+          show_headline: false
+        ordered_column_ids:
+        - Product
+        - test
+        - Total Sales
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: STACKED_COLUMN
+        chart_columns:
+        - column_id: Product
+        - column_id: Total Sales
+        - column_id: test
+        axis_configs:
+        - x:
+          - test
+          "y":
+          - Total Sales
+          color:
+          - Product
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Product\",\"columnProperty\": {}},{\"columnId\": \"Total Sales\",\"columnProperty\": {}},{\"columnId\": \"Measure names\",\"columnProperty\": {}},{\"columnId\": \"Measure values\",\"columnProperty\": {}},{\"columnId\": \"test\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"b41e4b0b-57e7-4fe2-9731-e2ef20310644\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Sales\"],\"isOpposite\": false}},{\"id\": \"9b7fc368-e915-40a4-a296-ada95492f868\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"test\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Total Sales\",\"color\": \"#2E75F0\"},{\"serieName\": \"cheese\",\"color\": \"#06BF7F\"},{\"serieName\": \"cookies\",\"color\": \"#FCC838\"},{\"serieName\": \"eggs\",\"color\": \"#48D1E0\"},{\"serieName\": \"plates\",\"color\": \"#71A1F4\"},{\"serieName\": \"soap\",\"color\": \"#2E75F0\"}]}"
+        custom_visual_props: "{\"chartSettingsVersion\":\"1\"}"
+      display_mode: CHART_MODE
+    viz_guid: 43f326e0-c29f-4120-871c-4ee581e6e615
   groups:
   - id: Group_1
     name: Overview
@@ -1091,6 +1135,16 @@ liveboard:
     group_guid: 1bdd659b-40b2-49b3-b561-9a85a74f3322
   filters:
   - column:
+    - (Sample) Retail - Apparel::region
+    excluded_visualizations:
+    - Viz_10
+    - Viz_13
+    - Viz_16
+    - Viz_17
+    is_mandatory: false
+    is_single_value: false
+    display_name: ""
+  - column:
     - (Sample) Retail - Apparel::date
     - case_study_worksheet::Date
     excluded_visualizations:
@@ -1104,16 +1158,6 @@ liveboard:
       date_range:
         start_date: 03/01/2024
         end_date: 01/01/2026
-    display_name: ""
-  - column:
-    - (Sample) Retail - Apparel::region
-    excluded_visualizations:
-    - Viz_10
-    - Viz_13
-    - Viz_16
-    - Viz_17
-    is_mandatory: false
-    is_single_value: false
     display_name: ""
   layout:
     tabs:
@@ -1264,6 +1308,7 @@ liveboard:
         "y": 37
         height: 8
         width: 12
+      - visualization_id: Viz_23
       id: bc1367ad-377d-47da-b750-7adb50105cf3
   ordered_chips:
   - name: (Sample) Retail - Apparel::date
@@ -1275,16 +1320,6 @@ liveboard:
     name: midwest
     view_filters:
     - column:
-      - (Sample) Retail - Apparel::date
-      date_filter:
-        type: EXACT_DATE_RANGE
-        oper: between
-        date_range:
-          start_date: 03/01/2024
-          end_date: 01/01/2026
-      applicability:
-        level: LIVEBOARD
-    - column:
       - (Sample) Retail - Apparel::region
       oper: in
       values:
@@ -1297,10 +1332,34 @@ liveboard:
       applicability:
         level: TAB
         target_id: bc21fd2f-b7aa-473e-bef5-88f6d4b4f85a
+    - column:
+      - (Sample) Retail - Apparel::date
+      date_filter:
+        type: EXACT_DATE_RANGE
+        oper: between
+        date_range:
+          start_date: 03/01/2024
+          end_date: 01/01/2026
+      applicability:
+        level: LIVEBOARD
     is_public: false
+    author:
+      username: cheese
+      user_email: shubham.sonawane@thoughtspot.com
   - view_guid: f4ee2490-8e82-4f5d-ba15-0fb1a0c0a804
     name: My view
     view_filters:
+    - column:
+      - (Sample) Retail - Apparel::region
+      oper: in
+      applicability:
+        level: LIVEBOARD
+    - column:
+      - (Sample) Retail - Apparel::county
+      oper: in
+      applicability:
+        level: TAB
+        target_id: bc21fd2f-b7aa-473e-bef5-88f6d4b4f85a
     - column:
       - (Sample) Retail - Apparel::date
       date_filter:
@@ -1312,29 +1371,13 @@ liveboard:
         include_current_period: false
       applicability:
         level: LIVEBOARD
-    - column:
-      - (Sample) Retail - Apparel::region
-      oper: in
-      applicability:
-        level: LIVEBOARD
-    - column:
-      - (Sample) Retail - Apparel::county
-      oper: in
-      applicability:
-        level: TAB
-        target_id: bc21fd2f-b7aa-473e-bef5-88f6d4b4f85a
     is_public: false
+    author:
+      username: shubham.sonawane
+      user_email: shubham.sonawane@thoughtspot.com
   - view_guid: 174ce642-2386-4506-88e2-22d5b98a1785
     name: latest data
     view_filters:
-    - column:
-      - (Sample) Retail - Apparel::date
-      date_filter:
-        type: THIS_PERIOD
-        oper: =
-        date_period: MONTH
-      applicability:
-        level: LIVEBOARD
     - column:
       - (Sample) Retail - Apparel::region
       oper: in
@@ -1348,20 +1391,21 @@ liveboard:
       applicability:
         level: TAB
         target_id: bc21fd2f-b7aa-473e-bef5-88f6d4b4f85a
-    is_public: false
-  - view_guid: 05c517f5-60d5-48f0-b7d7-d04434016487
-    name: new view
-    view_filters:
     - column:
       - (Sample) Retail - Apparel::date
       date_filter:
-        type: EXACT_DATE_RANGE
-        oper: between
-        date_range:
-          start_date: 03/01/2024
-          end_date: 01/01/2026
+        type: THIS_PERIOD
+        oper: =
+        date_period: MONTH
       applicability:
         level: LIVEBOARD
+    is_public: false
+    author:
+      username: shubham.sonawane
+      user_email: shubham.sonawane@thoughtspot.com
+  - view_guid: 05c517f5-60d5-48f0-b7d7-d04434016487
+    name: new view
+    view_filters:
     - column:
       - (Sample) Retail - Apparel::region
       oper: in
@@ -1376,7 +1420,20 @@ liveboard:
       applicability:
         level: TAB
         target_id: bc21fd2f-b7aa-473e-bef5-88f6d4b4f85a
+    - column:
+      - (Sample) Retail - Apparel::date
+      date_filter:
+        type: EXACT_DATE_RANGE
+        oper: between
+        date_range:
+          start_date: 03/01/2024
+          end_date: 01/01/2026
+      applicability:
+        level: LIVEBOARD
     is_public: false
+    author:
+      username: shubham.sonawane
+      user_email: shubham.sonawane@thoughtspot.com
   style:
     style_properties:
     - name: lb_border_type
